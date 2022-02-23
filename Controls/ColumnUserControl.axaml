@@ -1,0 +1,33 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+			 xmlns:controls="clr-namespace:kanban_project.Controls"
+             x:Class="kanban_project.Controls.ColumnUserControl"
+			 Padding="16" DragDrop.AllowDrop="True">
+	<StackPanel Spacing="10">
+		<Grid RowDefinitions="Auto" ColumnDefinitions="Auto,*,Auto,Auto,Auto,Auto">
+			<TextBlock Grid.ColumnSpan="2" Text="{Binding Name}"/>
+			<!--<TextBlock Grid.Column="3" Text="{Binding WorkItemCount}" Margin="16,0,32,0"/>-->
+			<Button Grid.Column="4" Background="Black" BorderThickness="0"
+					Command="{Binding EditColumn}" Content="&#xE104;" Margin="0,0,4,0"/>
+			<Button Grid.Column="5" Background="Black" BorderThickness="0"
+					Command="{Binding DeleteColumn}" Content="&#xE107;" Margin="0,0,8,0"/>
+		</Grid>
+		<ItemsControl Items="{Binding Tasks}">
+			<ItemsControl.ItemsPanel>
+				<ItemsPanelTemplate>
+					<StackPanel VerticalAlignment="Top" Spacing="10"/>
+				</ItemsPanelTemplate>
+			</ItemsControl.ItemsPanel>
+			<ItemsControl.ItemTemplate>
+				<DataTemplate>
+					<controls:CardUserControl DataContext="{Binding}"/>
+				</DataTemplate>
+			</ItemsControl.ItemTemplate>
+		</ItemsControl>
+		
+		<Button Content="Добавить карточку" Command="{Binding AddCard}"/>
+	</StackPanel>
+</UserControl>
