@@ -5,15 +5,15 @@ using Avalonia.Markup.Xaml;
 namespace kanban_project.Controls
 {
     public partial class CardUserControl : UserControl
-{
-    public CardUserControl()
     {
-        InitializeComponent();
-    }
+        public CardUserControl()
+        {
+            InitializeComponent();
+        }
 
-    private void InitializeComponent()
-    {
-        AvaloniaXamlLoader.Load(this);
+        private void InitializeComponent()
+        {
+            AvaloniaXamlLoader.Load(this);
+        }
     }
-}
 }

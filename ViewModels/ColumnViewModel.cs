@@ -34,7 +34,8 @@ namespace kanban_project.ViewModels
             set => cards = value;
         }
 
-        public string Name {
+        public string Name
+        {
             get => Model.Name;
             set => Model.Name = value;
         }
@@ -46,7 +47,14 @@ namespace kanban_project.ViewModels
 
         // Edit
         // удаление
-        // AddCard
+        public void AddCard()
+        {
+            // добавить НАСТОЯЩЕЕ создание
+            CardViewModel card = new();
+            card.Parent = this;
+            Cards.Add(card);
+            Model.Cards.Add(card.Model);
+        }
         // удаление карточек
     }
 }

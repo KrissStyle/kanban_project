@@ -7,15 +7,9 @@
              x:Class="kanban_project.Controls.ColumnUserControl"
 			 Padding="16" DragDrop.AllowDrop="True">
 	<StackPanel Spacing="10">
-		<Grid RowDefinitions="Auto" ColumnDefinitions="Auto,*,Auto,Auto,Auto,Auto">
-			<TextBlock Grid.ColumnSpan="2" Text="{Binding Name}"/>
-			<!--<TextBlock Grid.Column="3" Text="{Binding WorkItemCount}" Margin="16,0,32,0"/>-->
-			<Button Grid.Column="4" Background="Black" BorderThickness="0"
-					Command="{Binding EditColumn}" Content="&#xE104;" Margin="0,0,4,0"/>
-			<Button Grid.Column="5" Background="Black" BorderThickness="0"
-					Command="{Binding DeleteColumn}" Content="&#xE107;" Margin="0,0,8,0"/>
-		</Grid>
-		<ItemsControl Items="{Binding Tasks}">
+		<TextBlock Text="{Binding Name}"/>
+		<TextBlock Text="{Binding Cards.Count}" Margin="16,0,32,0"/>
+		<ItemsControl Items="{Binding Cards}">
 			<ItemsControl.ItemsPanel>
 				<ItemsPanelTemplate>
 					<StackPanel VerticalAlignment="Top" Spacing="10"/>
