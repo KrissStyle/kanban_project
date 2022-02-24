@@ -21,7 +21,7 @@ namespace kanban_project.ViewModels
         }
 
         public ColumnModel Model { get; set; }
-        // parent
+        public BoardViewModel Parent { get; set; }
 
         private ObservableCollection<CardViewModel> cards;
         public ObservableCollection<CardViewModel> Cards

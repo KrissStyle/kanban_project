@@ -17,6 +17,7 @@
 		<!--<Grid DockPanel.Dock="Top">
 
 		</Grid>-->
+		<!--Контейнер со столбцами-->
 		<ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
 			<StackPanel Spacing="10" Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Top">
 				<ItemsControl Items="{Binding SelectedBoard.Columns}">
