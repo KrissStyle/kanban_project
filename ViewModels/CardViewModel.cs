@@ -1,4 +1,5 @@
-﻿using kanban_project.Models;
+﻿using Avalonia.Media;
+using kanban_project.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -35,6 +36,11 @@ namespace kanban_project.ViewModels {
 
         public Guid Id { get => Model.Id; }
 
+        //public Color Color
+        //{
+        //    get => Model.Color;
+        //    set => Model.Color = value;
+        //}
         // редактирование
         // удаление
     }

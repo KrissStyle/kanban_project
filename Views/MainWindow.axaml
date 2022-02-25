@@ -6,8 +6,7 @@
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
 		xmlns:controls="clr-namespace:kanban_project.Controls"
         x:Class="kanban_project.Views.MainWindow"
-        Icon="/Assets/avalonia-logo.ico"
-        Title="Kanban Board">
+        Icon="/Assets/avalonia-logo.ico" Title="Kanban Board" Padding="40">
 
 	<Design.DataContext>
 		<vm:MainWindowViewModel/>
@@ -17,24 +16,37 @@
 		<!--<Grid DockPanel.Dock="Top">
 
 		</Grid>-->
-		<!--Контейнер со столбцами-->
-		<ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
-			<StackPanel Spacing="10" Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Top">
-				<ItemsControl Items="{Binding SelectedBoard.Columns}">
-					<ItemsControl.ItemsPanel>
-						<ItemsPanelTemplate>
-							<StackPanel Orientation="Horizontal" />
-						</ItemsPanelTemplate>
-					</ItemsControl.ItemsPanel>
-					<ItemsControl.ItemTemplate>
-						<DataTemplate>
-							<controls:ColumnUserControl DataContext="{Binding}" />
-						</DataTemplate>
-					</ItemsControl.ItemTemplate>
-				</ItemsControl>
-				<Button Content="Добавить столбец" VerticalAlignment="Top" Command="{Binding AddColumn}"
-						IsVisible="{Binding SelectedBoard, Converter={x:Static ObjectConverters.IsNotNull}}" Margin="5"/>
-			</StackPanel>
-		</ScrollViewer>
+		<StackPanel Spacing="28">
+			<StackPanel Spacing="6">
+				<TextBlock Text="{Binding SelectedBoard.Name}" FontSize="24" FontWeight="Bold"/>
+				<TextBlock Text="{Binding SelectedBoard.Description}" FontSize="12"/>
+			</StackPanel>	
+			<!--Контейнер со столбцами-->
+			<ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
+				<StackPanel Spacing="5" Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Top">
+					<!--IsVisible чтобы не было бага с отображением контрола предметов и лишнего отступа-->
+					<ItemsControl Items="{Binding SelectedBoard.Columns}" IsVisible="{Binding SelectedBoard.Columns.Count}">
+						<ItemsControl.ItemsPanel>
+							<ItemsPanelTemplate>
+								<StackPanel Orientation="Horizontal" Spacing="10" />
+							</ItemsPanelTemplate>
+						</ItemsControl.ItemsPanel>
+						<ItemsControl.ItemTemplate>
+							<DataTemplate>
+								<controls:ColumnUserControl DataContext="{Binding}"/>
+							</DataTemplate>
+						</ItemsControl.ItemTemplate>
+					</ItemsControl>
+					<Button Content="Добавить столбец" VerticalAlignment="Top"
+									IsVisible="{Binding SelectedBoard, Converter={x:Static ObjectConverters.IsNotNull}}" Margin="5">
+						<Button.Flyout>
+							<Flyout>
+								<TextBox Watermark="Введите имя столбца" Name="AddColumnTextBox"/>
+							</Flyout>
+						</Button.Flyout>
+					</Button>
+				</StackPanel>
+			</ScrollViewer>
+		</StackPanel>
 	</DockPanel>
 </Window>

@@ -28,7 +28,12 @@ namespace kanban_project.ViewModels
         {
             get
             {
-                if (cards == null) cards = new ObservableCollection<CardViewModel>();
+                if (cards == null)
+                {
+                    cards = new ObservableCollection<CardViewModel>(Model.Cards.Select(c => new CardViewModel(c) {
+                        Parent = this
+                    }));
+                }
                 return cards;
             }
             set => cards = value;
@@ -45,15 +50,32 @@ namespace kanban_project.ViewModels
             get => Model.Id;
         }
 
+        public double ScrollValue
+        {
+            get;
+            set;
+        }
+
+        public double MaxScrollValue
+        {
+            get;
+            set;
+        }
         // Edit
         // удаление
         public void AddCard()
         {
             // добавить НАСТОЯЩЕЕ создание
-            CardViewModel card = new();
-            card.Parent = this;
+            CardViewModel card = new CardViewModel { Parent = this };
             Cards.Add(card);
             Model.Cards.Add(card.Model);
+        }
+
+        public void AddCard(CardModel card)
+        {
+            CardViewModel cardViewModel = new CardViewModel(card) { Parent = this };
+            Cards.Add(cardViewModel);
+            Model.Cards.Add(card);
         }
         // удаление карточек
     }

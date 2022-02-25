@@ -27,7 +27,12 @@ namespace kanban_project.ViewModels
         {
             get
             {
-                if (columns == null) columns = new ObservableCollection<ColumnViewModel>();
+                if (columns == null)
+                {
+                    columns = new ObservableCollection<ColumnViewModel>(
+                        Model.Columns.Select(c => new ColumnViewModel(c) { Parent = this })
+                    );
+                }
                 return columns;
             }
             set => columns = value;
@@ -39,6 +44,12 @@ namespace kanban_project.ViewModels
             set => Model.Name = value;
         }
 
+        public string Description
+        {
+            get => Model.Description;
+            set => Model.Description = value;
+        }
+        
         public Guid Id
         {
             get => Model.Id;

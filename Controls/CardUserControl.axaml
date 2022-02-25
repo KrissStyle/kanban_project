@@ -4,16 +4,11 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="kanban_project.Controls.CardUserControl"
-			 Padding="8"
-			 MaxWidth="500">
-	<Grid RowDefinitions="Auto,*,Auto" ColumnDefinitions="Auto,*,Auto,Auto,Auto,Auto" Background="{Binding Color}">
-		<TextBlock Classes="Title" Grid.ColumnSpan="2" Text="{Binding Name}" TextWrapping="Wrap" />
-
-		<!--<Button Grid.Column="4" Command="{Binding EditCard}" Content="&#xE104;" Height="30" Width="30"
-				VerticalAlignment="Top" Padding="0" BorderThickness="0" Margin="8,0,8,0"/>
-		<Button Grid.Column="5" Command="{Binding DeleteCard}" Content="&#xE107;" Height="30" Width="30"
-				VerticalAlignment="Top" Padding="0" BorderThickness="0"/>
-		<TextBlock Grid.Row="1" Grid.ColumnSpan="5" Text="{Binding Description}"
-				   FontSize="14" FontWeight="Regular"/>-->
-	</Grid>
+			 ClipToBounds="False">
+	<Border Background="WhiteSmoke" CornerRadius="12" Padding="8" BoxShadow="0 1 1 0 DarkGray">
+		<StackPanel>
+			<TextBlock Classes="Title" Text="{Binding Name}" TextWrapping="Wrap" />
+			<TextBlock Text="{Binding Description}" FontSize="12" FontWeight="SemiLight" TextTrimming="WordEllipsis" TextWrapping="WrapWithOverflow" MaxLines="2"/>
+		</StackPanel>
+	</Border>
 </UserControl>
