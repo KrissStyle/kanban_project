@@ -2,31 +2,29 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             mc:Ignorable="d"
+             mc:Ignorable="d" d:DesignHeight="300"
              xmlns:vm="using:kanban_project.ViewModels"
-			 xmlns:mock="using:kanban_project.DesignMock"
+             xmlns:mock="using:kanban_project.DesignMock"
              xmlns:controls="using:kanban_project.Controls"
              x:Class="kanban_project.Controls.ColumnUserControl"
              x:DataType="vm:ColumnViewModel"
              x:CompileBindings="True"
              DragDrop.AllowDrop="True"
-			 Width="250">
-	
-	<Design.DataContext>
-		<mock:ColumnMock />
-	</Design.DataContext>
-	
+             Width="250">
+    
+    <Design.DataContext>
+        <mock:ColumnMock />
+    </Design.DataContext>
+    
     <ScrollViewer HorizontalScrollBarVisibility="Disabled"
-				  VerticalScrollBarVisibility="Visible"
-				  VerticalAlignment="Stretch"
-				  VerticalScrollBarValue="{Binding ScrollValue}"
-				  VerticalScrollBarMaximum="{Binding MaxScrollValue, Mode=OneWayToSource}">
+                  VerticalScrollBarVisibility="Auto"
+                  VerticalScrollBarValue="{Binding ScrollValue}"
+                  VerticalScrollBarMaximum="{Binding MaxScrollValue, Mode=OneWayToSource}">
         <Border CornerRadius="12" Background="AliceBlue" VerticalAlignment="Top">
             <StackPanel Spacing="12" Margin="12">
                 <Border HorizontalAlignment="Left" Padding="12,4,12,4" CornerRadius="100" Background="LightGray">
-                    <TextBlock Text="{Binding Name}"/>
+                    <TextBlock Text="{Binding Name}" TextWrapping="Wrap"/>
                 </Border>
-                <!--<TextBlock Text="{Binding Cards.Count}" Margin="16,0,32,0"/>-->
                 <ItemsControl Items="{Binding Cards}" ClipToBounds="False">
                     <ItemsControl.ItemsPanel>
                         <ItemsPanelTemplate>
