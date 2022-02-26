@@ -8,7 +8,7 @@ using System.Collections.ObjectModel;
 
 namespace kanban_project.ViewModels
 {
-    public class ColumnViewModel
+    public class ColumnViewModel : ViewModelBase
     {
         public ColumnViewModel()
         {

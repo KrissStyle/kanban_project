@@ -2,42 +2,52 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             mc:Ignorable="d" d:DesignWidth="300" d:DesignHeight="450"
-			 xmlns:vm="using:kanban_project.ViewModels"
-			 xmlns:controls="clr-namespace:kanban_project.Controls"
+             mc:Ignorable="d"
+             xmlns:vm="using:kanban_project.ViewModels"
+			 xmlns:mock="using:kanban_project.DesignMock"
+             xmlns:controls="using:kanban_project.Controls"
              x:Class="kanban_project.Controls.ColumnUserControl"
-			 x:DataType="vm:ColumnViewModel"
-			 x:CompileBindings="True"
-			 DragDrop.AllowDrop="True"
-			 MaxWidth="300">
-	<ScrollViewer VerticalAlignment="Top" VerticalScrollBarValue="{Binding ScrollValue}" VerticalScrollBarMaximum="{Binding MaxScrollValue, Mode=OneWayToSource}" >
-		<Border CornerRadius="12" Background="AliceBlue">
-			<StackPanel Spacing="12" Margin="12">
-				<Border HorizontalAlignment="Left" Padding="12,4,12,4" CornerRadius="100" Background="LightGray">
-					<TextBlock Text="{Binding Name}"/>
-				</Border>
-				<!--<TextBlock Text="{Binding Cards.Count}" Margin="16,0,32,0"/>-->
-				<ItemsControl Items="{Binding Cards}" ClipToBounds="False">
-					<ItemsControl.ItemsPanel>
-						<ItemsPanelTemplate>
-							<StackPanel Spacing="12"/>
-						</ItemsPanelTemplate>
-					</ItemsControl.ItemsPanel>
-					<ItemsControl.ItemTemplate>
-						<DataTemplate>
-							<controls:CardUserControl DataContext="{Binding}"/>
-						</DataTemplate>
-					</ItemsControl.ItemTemplate>
-				</ItemsControl>
+             x:DataType="vm:ColumnViewModel"
+             x:CompileBindings="True"
+             DragDrop.AllowDrop="True"
+			 Width="250">
+	
+	<Design.DataContext>
+		<mock:ColumnMock />
+	</Design.DataContext>
+	
+    <ScrollViewer HorizontalScrollBarVisibility="Disabled"
+				  VerticalScrollBarVisibility="Visible"
+				  VerticalAlignment="Stretch"
+				  VerticalScrollBarValue="{Binding ScrollValue}"
+				  VerticalScrollBarMaximum="{Binding MaxScrollValue, Mode=OneWayToSource}">
+        <Border CornerRadius="12" Background="AliceBlue" VerticalAlignment="Top">
+            <StackPanel Spacing="12" Margin="12">
+                <Border HorizontalAlignment="Left" Padding="12,4,12,4" CornerRadius="100" Background="LightGray">
+                    <TextBlock Text="{Binding Name}"/>
+                </Border>
+                <!--<TextBlock Text="{Binding Cards.Count}" Margin="16,0,32,0"/>-->
+                <ItemsControl Items="{Binding Cards}" ClipToBounds="False">
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <StackPanel Spacing="12"/>
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <controls:CardUserControl DataContext="{Binding}"/>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
 
-				<Button Content="Добавить карточку" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center">
-					<Button.Flyout>
-						<Flyout>
-							<TextBox Watermark="Введите имя карточки" Name="AddCardTextBox"/>
-						</Flyout>
-					</Button.Flyout>
-				</Button>
-			</StackPanel>
-		</Border>
-	</ScrollViewer>
+                <Button Content="Добавить карточку" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center">
+                    <Button.Flyout>
+                        <Flyout>
+                            <TextBox Watermark="Введите имя карточки" Name="AddCardTextBox"/>
+                        </Flyout>
+                    </Button.Flyout>
+                </Button>
+            </StackPanel>
+        </Border>
+    </ScrollViewer>
 </UserControl>
