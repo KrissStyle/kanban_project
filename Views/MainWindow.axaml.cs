@@ -46,34 +46,7 @@ namespace kanban_project.Views
 
             MainWindowViewModel viewModel = new MainWindowViewModel();
 
-            this.DataContext = viewModel;
-
-            //viewModel.OpenAddBoardDialog += () =>
-            //{
-            //    AddBoardWindow addBoard = new AddBoardWindow(new AddBoardViewModel());
-            //    BoardViewModel result = addBoard.ShowDialogSync<BoardViewModel>(this);
-            //    return result;
-            //};
-
-            //viewModel.OpenEditBoardDialog += (board) =>
-            //{
-            //    AddBoardWindow addBoard = new AddBoardWindow(new AddBoardViewModel(board));
-            //    BoardViewModel result = addBoard.ShowDialogSync<BoardViewModel>(this);
-            //    return result;
-            //};
-
-            //viewModel.ShowMessageDialog += (title, message) =>
-            //{
-            //    MessageBoxWindow messageBox = new MessageBoxWindow(new MessageBoxViewModel(title, message));
-            //    return messageBox.ShowDialogSync<string>(this);
-            //};
-
-            //viewModel.OpenAddColumnDialog += () =>
-            //{
-            //    AddColumnWindow addColumn = new AddColumnWindow(new AddColumnViewModel());
-            //    ColumnViewModel result = addColumn.ShowDialogSync<ColumnViewModel>(this);
-            //    return result;
-            //};
+            DataContext = viewModel;
         }
     }
 }

@@ -36,6 +36,8 @@ namespace kanban_project.ViewModels {
 
         public Guid Id { get => Model.Id; }
 
+        public Action<CardViewModel> ShowDetailedCardDialog { get; set; }
+
         //public Color Color
         //{
         //    get => Model.Color;
