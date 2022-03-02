@@ -11,16 +11,19 @@ namespace kanban_project.Controls
     {
         //private Flyout flyout;
         private TextBox textBox;
+        private ScrollViewer scrollViewer;
         public ColumnUserControl()
         {
             InitializeComponent();
 
+            scrollViewer = this.Find<ScrollViewer>("CardScrollViewer");
             textBox = this.Find<TextBox>("AddCardTextBox");
             //flyout = (Flyout)textBox.Parent;
 
             //flyout.Closing += Flyout_Closing;
                 
             textBox.KeyDown += ColumnUserControl_KeyDown;
+            AddHandler(DragDrop.DropEvent, OnDrop);
         }
 
         //private void Flyout_Closing(object sender, System.ComponentModel.CancelEventArgs e)
@@ -44,12 +47,24 @@ namespace kanban_project.Controls
                 {
                 } else
                 {
-                    ((ColumnViewModel)DataContext).AddCard(new CardModel() { Name = textBox.Text });
+                    (DataContext as ColumnViewModel).AddCard(new CardModel() { Name = textBox.Text });
+                    scrollViewer.ScrollToEnd();
                 }
 
                 textBox.Text = "";
                 //((Flyout)((FlyoutPresenter)textBox.Parent).Parent)?.Hide();
             }
+        }
+
+        private async void OnDrop(object sender, DragEventArgs e)
+        {
+            CardViewModel card = e.Data.Get("card") as CardViewModel;
+
+            if (card.Parent == this.DataContext) return;
+
+            card.Parent.RemoveCard(card);
+            (DataContext as ColumnViewModel).AddCard(card.Model);
+            scrollViewer.ScrollToEnd();
         }
 
         private void InitializeComponent()

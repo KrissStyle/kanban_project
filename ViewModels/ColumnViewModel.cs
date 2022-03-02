@@ -1,10 +1,7 @@
-﻿using kanban_project.Models;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Collections.ObjectModel;
+using kanban_project.Models;
 
 namespace kanban_project.ViewModels
 {
@@ -61,14 +58,10 @@ namespace kanban_project.ViewModels
             get;
             set;
         }
-        // Edit
-        // удаление
+
         public void AddCard()
         {
-            // добавить НАСТОЯЩЕЕ создание
-            CardViewModel card = new CardViewModel { Parent = this };
-            Cards.Add(card);
-            Model.Cards.Add(card.Model);
+            AddCard(new CardModel());
         }
 
         public void AddCard(CardModel card)
@@ -77,6 +70,10 @@ namespace kanban_project.ViewModels
             Cards.Add(cardViewModel);
             Model.Cards.Add(card);
         }
-        // удаление карточек
+
+        public void RemoveCard(CardViewModel card)
+        {
+            Cards.Remove(card);
+        }
     }
 }

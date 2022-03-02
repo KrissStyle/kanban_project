@@ -29,10 +29,10 @@
             </TabControl>
         </Grid>
 
-        <ScrollViewer Padding="10" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Disabled">
-            <Grid RowDefinitions="auto,24,*">
+        <ScrollViewer Name="ColumnScrollViewer" Padding="30" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Disabled">
+            <Grid RowDefinitions="auto,30,*">
                 <!--Заголовок и описание доски-->
-                <StackPanel Spacing="6" Grid.Row="0">
+                <StackPanel Spacing="6" Grid.Row="0" >
                     <TextBlock Text="{Binding SelectedBoard.Name}" FontSize="24" FontWeight="Bold"/>
                     <TextBlock Text="{Binding SelectedBoard.Description}" FontSize="12"/>
                 </StackPanel>
@@ -60,7 +60,7 @@
                     <Button Content="Добавить столбец" VerticalAlignment="Top"
                                     IsVisible="{Binding SelectedBoard, Converter={x:Static ObjectConverters.IsNotNull}}">
                         <Button.Flyout>
-                            <Flyout>
+                            <Flyout Placement="Left">
                                 <TextBox Watermark="Введите имя столбца" Name="AddColumnTextBox"/>
                             </Flyout>
                         </Button.Flyout>

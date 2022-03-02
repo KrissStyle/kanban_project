@@ -1,10 +1,5 @@
-﻿using Avalonia.Media;
+﻿using System;
 using kanban_project.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace kanban_project.ViewModels {
     public class CardViewModel : ViewModelBase
@@ -38,11 +33,6 @@ namespace kanban_project.ViewModels {
 
         public Action<CardViewModel> ShowDetailedCardDialog { get; set; }
 
-        //public Color Color
-        //{
-        //    get => Model.Color;
-        //    set => Model.Color = value;
-        //}
         // редактирование
         // удаление
     }
