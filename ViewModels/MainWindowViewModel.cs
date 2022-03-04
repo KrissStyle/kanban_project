@@ -71,6 +71,7 @@ namespace kanban_project.ViewModels
             }
             set => boards = value;
         }
+
         public void AddColumn()
         {
             // добавить НАСТОЯЩЕЕ создание
@@ -79,7 +80,7 @@ namespace kanban_project.ViewModels
             column.Parent = SelectedBoard;
         }
 
-        internal void AddColumn(ColumnModel columnModel)
+        public void AddColumn(ColumnModel columnModel)
         {
             ColumnViewModel column = new ColumnViewModel(columnModel);
             SelectedBoard.Columns.Add(column);

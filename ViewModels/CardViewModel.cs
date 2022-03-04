@@ -1,17 +1,26 @@
 ﻿using System;
+using System.Reactive.Linq;
+using System.Windows.Input;
 using kanban_project.Models;
+using ReactiveUI;
 
 namespace kanban_project.ViewModels {
     public class CardViewModel : ViewModelBase
     {
-        public CardViewModel()
-        {
-            this.Model = new CardModel();
-        }
+        //public CardViewModel() : this(new CardModel()) { }
 
         public CardViewModel(CardModel card)
         {
-            this.Model = card;
+            Model = card;
+
+            ShowDialog = new Interaction<DetailedCardViewModel, CardViewModel?>();
+
+            EditCardCommand = ReactiveCommand.CreateFromTask(async () =>
+            {
+                var details = new DetailedCardViewModel();
+
+                var result = await ShowDialog.Handle(details);
+            });
         }
 
         public CardModel Model { get; set; }
@@ -31,7 +40,8 @@ namespace kanban_project.ViewModels {
 
         public Guid Id { get => Model.Id; }
 
-        public Action<CardViewModel> ShowDetailedCardDialog { get; set; }
+        public ICommand EditCardCommand { get; }
+        public Interaction<DetailedCardViewModel, CardViewModel?> ShowDialog { get; }
 
         // редактирование
         // удаление

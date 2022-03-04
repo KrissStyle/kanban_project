@@ -7,16 +7,21 @@
              xmlns:mock="using:kanban_project.DesignMock"
              x:Class="kanban_project.Controls.CardUserControl"
              ClipToBounds="False"
-			 Tapped="ShowDetailedCardDialog">
-
-	<Design.DataContext>
-		<mock:CardMock />
-	</Design.DataContext>
-
-	<Border Background="WhiteSmoke" CornerRadius="8" Padding="8" BoxShadow="0 1 1 0 DarkGray">
-		<StackPanel>
-			<TextBlock Classes="Title" Text="{Binding Name}" TextWrapping="Wrap" />
-			<TextBlock Text="{Binding Description}" FontSize="12" FontWeight="SemiLight" TextTrimming="WordEllipsis" TextWrapping="WrapWithOverflow" MaxLines="2"/>
-		</StackPanel>
-	</Border>
+             Tapped="OnTapped">
+    <Design.DataContext>
+        <mock:CardMock />
+    </Design.DataContext>
+    <Border Classes="card" Background="{DynamicResource ThemeCardBrush}">
+        <StackPanel Spacing="4">
+            <TextBlock Classes="cardTitle"
+                       Text="{Binding Name}"
+                       TextWrapping="Wrap" />
+            <TextBlock Classes="cardDescription"
+                       Text="{Binding Description}"
+                       TextTrimming="WordEllipsis"
+                       TextWrapping="WrapWithOverflow"
+                       MaxLines="2"
+                       IsVisible="{Binding Description}" />
+        </StackPanel>
+    </Border>
 </UserControl>

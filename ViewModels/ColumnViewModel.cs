@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Collections.ObjectModel;
 using kanban_project.Models;
+using Avalonia.Media;
 
 namespace kanban_project.ViewModels
 {
@@ -42,21 +43,19 @@ namespace kanban_project.ViewModels
             set => Model.Name = value;
         }
 
+        private SolidColorBrush color;
+        public SolidColorBrush Color
+        {
+            get => color ?? new SolidColorBrush(Model.Color);
+            set {
+                color = value;
+                Model.Color = value.Color;
+            }
+        }
+
         public Guid Id
         {
             get => Model.Id;
-        }
-
-        public double ScrollValue
-        {
-            get;
-            set;
-        }
-
-        public double MaxScrollValue
-        {
-            get;
-            set;
         }
 
         public void AddCard()

@@ -19,15 +19,15 @@
     <ScrollViewer Name="CardScrollViewer"
                   HorizontalScrollBarVisibility="Disabled"
                   VerticalScrollBarVisibility="Auto">
-        <Border CornerRadius="12" Background="White" VerticalAlignment="Top">
-            <StackPanel Spacing="12" Margin="12">
-                <Border HorizontalAlignment="Left" Padding="12,4,12,4" CornerRadius="100" Background="LightGray">
-                    <TextBlock Text="{Binding Name}" TextWrapping="Wrap"/>
+        <Border Classes="column" VerticalAlignment="Top">
+            <StackPanel Margin="12">
+                <Border Background="{Binding Color}" Padding="12,4" HorizontalAlignment="Left" CornerRadius="100">
+					<TextBlock Text="{Binding Name}" TextWrapping="Wrap" />
                 </Border>
                 <ItemsControl Items="{Binding Cards}" ClipToBounds="False" IsVisible="{Binding Cards.Count}">
                     <ItemsControl.ItemsPanel>
                         <ItemsPanelTemplate>
-                            <StackPanel Spacing="12"/>
+                            <StackPanel/>
                         </ItemsPanelTemplate>
                     </ItemsControl.ItemsPanel>
                     <ItemsControl.ItemTemplate>
@@ -37,7 +37,7 @@
                     </ItemsControl.ItemTemplate>
                 </ItemsControl>
 
-                <Button Content="Добавить карточку" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center">
+                <Button Classes="addCard" Content="Добавить карточку" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center">
                     <Button.Flyout>
                         <Flyout>
                             <TextBox Watermark="Введите имя карточки" Name="AddCardTextBox"/>

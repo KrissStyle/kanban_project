@@ -5,20 +5,20 @@ using Avalonia.Markup.Xaml;
 using kanban_project.ViewModels;
 using ReactiveUI;
 
-namespace kanban_project.Views.Popups
+namespace kanban_project.Views
 {
-    public partial class DetailedCardPopUpWindow : ReactiveWindow<DetailedCardViewModel>
+    public partial class DetailedCardPopup : ReactiveWindow<DetailedCardViewModel>
     {
-        public DetailedCardPopUpWindow()
+        public DetailedCardPopup()
         {
             InitializeComponent();
 #if DEBUG
             this.AttachDevTools();
 #endif
-            this.WhenActivated();
+            //this.WhenActivated(d => d());
         }
 
-        public DetailedCardPopUpWindow(CardViewModel cardViewModel) : this()
+        public DetailedCardPopup(CardViewModel cardViewModel) : this()
         {
             this.DataContext = cardViewModel;
         }

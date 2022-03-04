@@ -13,6 +13,11 @@
         <mock:MainWindowMock />
     </Design.DataContext>
 
+	<Window.Styles>
+		<StyleInclude Source="avares://Avalonia.Themes.Default/Accents/BaseDark.xaml" />
+		<StyleInclude Source="/CustomStyles.xaml" />
+	</Window.Styles>
+	
     <DockPanel>
         <Grid DockPanel.Dock="Top" Background="Red">
             <TabControl Items="{Binding Boards}">
@@ -29,27 +34,28 @@
             </TabControl>
         </Grid>
 
-        <ScrollViewer Name="ColumnScrollViewer" Padding="30" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Disabled">
+        <ScrollViewer Name="ColumnScrollViewer" Padding="30" Background="{DynamicResource ThemePrimary}" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Disabled">
             <Grid RowDefinitions="auto,30,*">
                 <!--Заголовок и описание доски-->
                 <StackPanel Spacing="6" Grid.Row="0" >
-                    <TextBlock Text="{Binding SelectedBoard.Name}" FontSize="24" FontWeight="Bold"/>
-                    <TextBlock Text="{Binding SelectedBoard.Description}" FontSize="12"/>
+                    <TextBlock Classes="h1" Text="{Binding SelectedBoard.Name}" />
+                    <TextBlock Classes="paragraph" Text="{Binding SelectedBoard.Description}" />
                 </StackPanel>
                 
                 <!--Разделитель-->
                 <Panel Grid.Row="1" />
                 
                 <!--Контейнер со столбцами и кнопкой-->
-                <StackPanel Spacing="10" Orientation="Horizontal" Grid.Row="2">
+                <StackPanel Orientation="Horizontal" Grid.Row="2">
                     <!--IsVisible чтобы не было бага с отображением контрола предметов и лишнего отступа-->
-                    <ItemsControl Name="ItemControl" Items="{Binding SelectedBoard.Columns}" IsVisible="{Binding SelectedBoard.Columns.Count}">
+                    <ItemsControl Name="ItemControl"
+								  Items="{Binding SelectedBoard.Columns}"
+								  IsVisible="{Binding SelectedBoard.Columns.Count}">
                         <ItemsControl.ItemsPanel>
                             <ItemsPanelTemplate>
-                                <StackPanel Orientation="Horizontal" Spacing="10" />
+                                <StackPanel Orientation="Horizontal" />
                             </ItemsPanelTemplate>
                         </ItemsControl.ItemsPanel>
-
                         <ItemsControl.ItemTemplate>
                             <DataTemplate>
                                 <controls:ColumnUserControl DataContext="{Binding}"/>
@@ -57,7 +63,7 @@
                         </ItemsControl.ItemTemplate>
                     </ItemsControl>
 
-                    <Button Content="Добавить столбец" VerticalAlignment="Top"
+                    <Button Classes="addColumn" Content="Добавить столбец" VerticalAlignment="Top"
                                     IsVisible="{Binding SelectedBoard, Converter={x:Static ObjectConverters.IsNotNull}}">
                         <Button.Flyout>
                             <Flyout Placement="Left">
