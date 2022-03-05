@@ -2,6 +2,8 @@
 using System.Linq;
 using System.Collections.ObjectModel;
 using kanban_project.Models;
+using Avalonia.Media;
+using DynamicData;
 
 namespace kanban_project.ViewModels
 {
@@ -27,7 +29,8 @@ namespace kanban_project.ViewModels
             {
                 if (cards == null)
                 {
-                    cards = new ObservableCollection<CardViewModel>(Model.Cards.Select(c => new CardViewModel(c) {
+                    cards = new ObservableCollection<CardViewModel>(Model.Cards.Select(c => new CardViewModel(c)
+                    {
                         Parent = this
                     }));
                 }
@@ -42,21 +45,20 @@ namespace kanban_project.ViewModels
             set => Model.Name = value;
         }
 
+        private SolidColorBrush color;
+        public SolidColorBrush Color
+        {
+            get => color ?? new SolidColorBrush(Model.Color);
+            set
+            {
+                color = value;
+                Model.Color = value.Color;
+            }
+        }
+
         public Guid Id
         {
             get => Model.Id;
-        }
-
-        public double ScrollValue
-        {
-            get;
-            set;
-        }
-
-        public double MaxScrollValue
-        {
-            get;
-            set;
         }
 
         public void AddCard()
@@ -69,11 +71,21 @@ namespace kanban_project.ViewModels
             CardViewModel cardViewModel = new CardViewModel(card) { Parent = this };
             Cards.Add(cardViewModel);
             Model.Cards.Add(card);
+            //save
+        }
+
+        public void EditCard(CardViewModel oldCard, CardViewModel newCard)
+        {
+            newCard.Parent = this;
+            Model.Cards.Replace(oldCard.Model, newCard.Model);
+            Cards.Replace(oldCard, newCard);
+            //save
         }
 
         public void RemoveCard(CardViewModel card)
         {
             Cards.Remove(card);
+            //save
         }
     }
 }

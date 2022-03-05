@@ -13,7 +13,7 @@
 		<mock:CardMock />
 	</Design.DataContext>
 
-	<Border Background="WhiteSmoke" CornerRadius="8" Padding="8" BoxShadow="0 1 1 0 DarkGray">
+	<Border Classes="Card">
 		<StackPanel>
 			<TextBlock Classes="Title" Text="{Binding Name}" TextWrapping="Wrap" />
 			<TextBlock Text="{Binding Description}" FontSize="12" FontWeight="SemiLight" TextTrimming="WordEllipsis" TextWrapping="WrapWithOverflow" MaxLines="2"/>

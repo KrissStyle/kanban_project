@@ -17,12 +17,17 @@ namespace kanban_project.Controls
             InitializeComponent();
         }
 
-        public void ShowDetailedCardDialog(object sender, RoutedEventArgs e)
+        public async void ShowDetailedCardDialog(object sender, RoutedEventArgs e)
         {
-            DetailedCardPopUpWindow popup = new DetailedCardPopUpWindow(DataContext as CardViewModel);
+            var card = DataContext as CardViewModel;
+            var details = new DetailedCardViewModel(DataContext as CardViewModel);
+            DetailedCardPopUpWindow popup = new DetailedCardPopUpWindow() { DataContext = details };
+
             if (Application.Current.ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
             {
-                popup.ShowDialog(desktop.MainWindow);
+                await popup.ShowDialog(desktop.MainWindow);
+
+                card.Parent.EditCard(card, details.card);
             }
         }
 

@@ -19,9 +19,9 @@
     <ScrollViewer Name="CardScrollViewer"
                   HorizontalScrollBarVisibility="Disabled"
                   VerticalScrollBarVisibility="Auto">
-        <Border CornerRadius="12" Background="White" VerticalAlignment="Top">
+        <Border CornerRadius="12" VerticalAlignment="Top">
             <StackPanel Spacing="12" Margin="12">
-                <Border HorizontalAlignment="Left" Padding="12,4,12,4" CornerRadius="100" Background="LightGray">
+                <Border Background="{Binding Color}" HorizontalAlignment="Left" Padding="12,4,12,4" CornerRadius="100">
                     <TextBlock Text="{Binding Name}" TextWrapping="Wrap"/>
                 </Border>
                 <ItemsControl Items="{Binding Cards}" ClipToBounds="False" IsVisible="{Binding Cards.Count}">

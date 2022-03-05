@@ -4,10 +4,11 @@ using Avalonia.Controls;
 using Avalonia.Markup.Xaml;
 using kanban_project.ViewModels;
 using ReactiveUI;
+using System.ComponentModel;
 
 namespace kanban_project.Views.Popups
 {
-    public partial class DetailedCardPopUpWindow : ReactiveWindow<DetailedCardViewModel>
+    public partial class DetailedCardPopUpWindow : Window
     {
         public DetailedCardPopUpWindow()
         {
@@ -15,7 +16,6 @@ namespace kanban_project.Views.Popups
 #if DEBUG
             this.AttachDevTools();
 #endif
-            this.WhenActivated();
         }
 
         public DetailedCardPopUpWindow(CardViewModel cardViewModel) : this()

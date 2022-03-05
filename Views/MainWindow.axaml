@@ -8,7 +8,10 @@
         xmlns:controls="clr-namespace:kanban_project.Controls"
         x:Class="kanban_project.Views.MainWindow"
         Icon="/Assets/avalonia-logo.ico" Title="Kanban Board" >
-
+	<Window.Styles>
+		<StyleInclude Source="avares://kanban_project/CustomStyles.axaml" />
+	</Window.Styles>
+	
     <Design.DataContext>
         <mock:MainWindowMock />
     </Design.DataContext>
@@ -33,39 +36,42 @@
             <Grid RowDefinitions="auto,30,*">
                 <!--Заголовок и описание доски-->
                 <StackPanel Spacing="6" Grid.Row="0" >
-                    <TextBlock Text="{Binding SelectedBoard.Name}" FontSize="24" FontWeight="Bold"/>
-                    <TextBlock Text="{Binding SelectedBoard.Description}" FontSize="12"/>
+                    <TextBlock Text="{Binding SelectedBoard.Name}" Foreground="{DynamicResource Secondary}" FontSize="{DynamicResource FontSizeLarge}" FontWeight="Bold"/>
+                    <TextBlock Text="{Binding SelectedBoard.Description}" FontSize="{DynamicResource FontSizeNormal}"/>
                 </StackPanel>
                 
                 <!--Разделитель-->
                 <Panel Grid.Row="1" />
                 
                 <!--Контейнер со столбцами и кнопкой-->
-                <StackPanel Spacing="10" Orientation="Horizontal" Grid.Row="2">
-                    <!--IsVisible чтобы не было бага с отображением контрола предметов и лишнего отступа-->
-                    <ItemsControl Name="ItemControl" Items="{Binding SelectedBoard.Columns}" IsVisible="{Binding SelectedBoard.Columns.Count}">
-                        <ItemsControl.ItemsPanel>
-                            <ItemsPanelTemplate>
-                                <StackPanel Orientation="Horizontal" Spacing="10" />
-                            </ItemsPanelTemplate>
-                        </ItemsControl.ItemsPanel>
+                <Border Background="{DynamicResource Secondary}" Padding="10" CornerRadius="10">
+                    <StackPanel Spacing="10" Orientation="Horizontal" Grid.Row="2">
+                        <!--IsVisible чтобы не было бага с отображением контрола предметов и лишнего отступа-->
+                        <ItemsControl Name="ItemControl" Items="{Binding SelectedBoard.Columns}" IsVisible="{Binding SelectedBoard.Columns.Count}">
+                            <ItemsControl.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <StackPanel Orientation="Horizontal" Spacing="10" />
+                                </ItemsPanelTemplate>
+                            </ItemsControl.ItemsPanel>
 
-                        <ItemsControl.ItemTemplate>
-                            <DataTemplate>
-                                <controls:ColumnUserControl DataContext="{Binding}"/>
-                            </DataTemplate>
-                        </ItemsControl.ItemTemplate>
-                    </ItemsControl>
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <controls:ColumnUserControl DataContext="{Binding}"/>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
 
-                    <Button Content="Добавить столбец" VerticalAlignment="Top"
-                                    IsVisible="{Binding SelectedBoard, Converter={x:Static ObjectConverters.IsNotNull}}">
-                        <Button.Flyout>
-                            <Flyout Placement="Left">
-                                <TextBox Watermark="Введите имя столбца" Name="AddColumnTextBox"/>
-                            </Flyout>
-                        </Button.Flyout>
-                    </Button>
-                </StackPanel>
+                        <Button Content="Добавить столбец" VerticalAlignment="Top"
+                                IsVisible="{Binding SelectedBoard, Converter={x:Static ObjectConverters.IsNotNull}}"
+                                Background="{DynamicResource Accent}">
+                            <Button.Flyout>
+                                <Flyout Placement="Left">
+                                    <TextBox Watermark="Введите имя столбца" Name="AddColumnTextBox"/>
+                                </Flyout>
+                            </Button.Flyout>
+                        </Button>
+                    </StackPanel>
+                </Border>
             </Grid>
         </ScrollViewer>
     </DockPanel>
