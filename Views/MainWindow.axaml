@@ -8,9 +8,6 @@
         xmlns:controls="clr-namespace:kanban_project.Controls"
         x:Class="kanban_project.Views.MainWindow"
         Icon="/Assets/avalonia-logo.ico" Title="Kanban Board" >
-	<Window.Styles>
-		<StyleInclude Source="avares://kanban_project/CustomStyles.axaml" />
-	</Window.Styles>
 	
     <Design.DataContext>
         <mock:MainWindowMock />

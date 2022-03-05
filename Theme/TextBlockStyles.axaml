@@ -1,9 +1,0 @@
-﻿<Styles xmlns="https://github.com/avaloniaui"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
-	<StyleInclude Source="avares://Avalonia.Themes.Default/DefaultTheme.xaml"/>
-	<StyleInclude Source="/Theme/TextBlockStyles.xaml"/>
-	<StyleInclude Source="/Theme/ButtonStyles.xaml"/>
-	<StyleInclude Source="/Theme/TextBoxStyles.xaml"/>
-	<StyleInclude Source="/Theme/BorderStyles.xaml"/>
-	<StyleInclude Source="/Theme/TabControlStyles.xaml"/>
-</Styles>
