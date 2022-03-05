@@ -5,9 +5,10 @@
              mc:Ignorable="d" d:DesignWidth="200"
              xmlns:vm="using:kanban_project.ViewModels"
              xmlns:mock="using:kanban_project.DesignMock"
+			 xmlns:loc="using:kanban_project.Behaviors"
              x:Class="kanban_project.Controls.CardUserControl"
              ClipToBounds="False"
-             Tapped="OnTapped">
+             loc:TappedBehav.Command="{Binding EditCard}">
     <Design.DataContext>
         <mock:CardMock />
     </Design.DataContext>

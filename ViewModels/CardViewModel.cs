@@ -20,6 +20,9 @@ namespace kanban_project.ViewModels {
                 var details = new DetailedCardViewModel();
 
                 var result = await ShowDialog.Handle(details);
+
+                if (result != null)
+                    Parent!.EditCard(this, result);
             });
         }
 

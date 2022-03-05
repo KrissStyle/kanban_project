@@ -15,7 +15,7 @@ namespace kanban_project.Views
 #if DEBUG
             this.AttachDevTools();
 #endif
-            //this.WhenActivated(d => d());
+            //this.WhenActivated(d => d(ViewModel!.));
         }
 
         public DetailedCardPopup(CardViewModel cardViewModel) : this()

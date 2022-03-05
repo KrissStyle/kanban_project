@@ -19,7 +19,7 @@ namespace kanban_project.Controls
         {
             InitializeComponent();
 
-            this.WhenActivated(d => d(ViewModel!.ShowDialog.RegisterHandler(DoShowDialogAsync)));
+            this.WhenActivated(d => d(ViewModel.ShowDialog.RegisterHandler(DoShowDialogAsync)));
         }
 
         private async Task DoShowDialogAsync(InteractionContext<DetailedCardViewModel, CardViewModel?> interaction)
@@ -30,19 +30,6 @@ namespace kanban_project.Controls
             var result = await dialog.ShowDialog<CardViewModel?>(VisualRoot as MainWindow);
             interaction.SetOutput(result);
         }
-
-        public void OnTapped(object sender, RoutedEventArgs e)
-        {
-            ViewModel!.EditCardCommand.Execute(null);
-        }
-        //public async void ShowDetailedCardDialog(object sender, RoutedEventArgs e)
-        //{
-        //    DetailedCardPopup popup = new DetailedCardPopup(DataContext as CardViewModel);
-        //    if (Application.Current.ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
-        //    {
-        //        var a = await popup.ShowDialog(desktop.MainWindow);
-        //    }
-        //}
 
         PointerPoint initialPoint;
         protected override void OnPointerPressed(PointerPressedEventArgs e)
