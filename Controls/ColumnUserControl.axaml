@@ -11,23 +11,21 @@
              x:CompileBindings="True"
              DragDrop.AllowDrop="True"
              Width="250">
-    
     <Design.DataContext>
         <mock:ColumnMock />
     </Design.DataContext>
-    
     <ScrollViewer Name="CardScrollViewer"
                   HorizontalScrollBarVisibility="Disabled"
                   VerticalScrollBarVisibility="Auto">
         <Border CornerRadius="12" VerticalAlignment="Top">
-            <StackPanel Spacing="12" Margin="12">
+            <StackPanel Margin="12">
                 <Border Background="{Binding Color}" HorizontalAlignment="Left" Padding="12,4,12,4" CornerRadius="100">
                     <TextBlock Text="{Binding Name}" TextWrapping="Wrap"/>
                 </Border>
-                <ItemsControl Items="{Binding Cards}" ClipToBounds="False" IsVisible="{Binding Cards.Count}">
+                <ItemsControl Items="{Binding Cards}" IsVisible="{Binding Cards.Count}">
                     <ItemsControl.ItemsPanel>
                         <ItemsPanelTemplate>
-                            <StackPanel Spacing="12"/>
+                            <StackPanel />
                         </ItemsPanelTemplate>
                     </ItemsControl.ItemsPanel>
                     <ItemsControl.ItemTemplate>

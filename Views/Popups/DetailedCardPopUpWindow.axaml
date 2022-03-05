@@ -14,13 +14,10 @@
     <mock:CardMock />
   </Design.DataContext>
 
-  <StackPanel Spacing="10">
-    <TextBox Classes="DetailedCardTitle" FontWeight="SemiBold" Text="{Binding Name}" TextWrapping="Wrap" />
-    <Panel Classes="Divider" Background="DarkGray" Height="1" HorizontalAlignment="Stretch"/>
-    <TextBox Text="{Binding Description}"
-             FontSize="12"
-             FontWeight="SemiLight"
-             TextWrapping="Wrap"
+  <StackPanel>
+    <TextBox Classes="Heading" Text="{Binding Name}" TextWrapping="Wrap" />
+    <Panel Classes="Divider" Height="1" HorizontalAlignment="Stretch"/>
+    <TextBox Classes="Caption" Text="{Binding Description}" TextWrapping="Wrap"
              MaxWidth="440"
              AcceptsReturn="True"/>
   </StackPanel>

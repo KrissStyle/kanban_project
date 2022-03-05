@@ -14,7 +14,7 @@
     </Design.DataContext>
 
     <DockPanel>
-        <Grid DockPanel.Dock="Top" Background="Red">
+        <Grid DockPanel.Dock="Top">
             <TabControl Items="{Binding Boards}">
                 <TabControl.ItemTemplate>
                     <DataTemplate>
@@ -33,21 +33,23 @@
             <Grid RowDefinitions="auto,30,*">
                 <!--Заголовок и описание доски-->
                 <StackPanel Spacing="6" Grid.Row="0" >
-                    <TextBlock Text="{Binding SelectedBoard.Name}" Foreground="{DynamicResource Secondary}" FontSize="{DynamicResource FontSizeLarge}" FontWeight="Bold"/>
-                    <TextBlock Text="{Binding SelectedBoard.Description}" FontSize="{DynamicResource FontSizeNormal}"/>
+                    <TextBlock Classes="BoardHeading" Text="{Binding SelectedBoard.Name}" />
+                    <TextBlock Classes="BoardAccent" Text="{Binding SelectedBoard.Description}" />
                 </StackPanel>
                 
                 <!--Разделитель-->
                 <Panel Grid.Row="1" />
                 
                 <!--Контейнер со столбцами и кнопкой-->
-                <Border Background="{DynamicResource Secondary}" Padding="10" CornerRadius="10">
-                    <StackPanel Spacing="10" Orientation="Horizontal" Grid.Row="2">
+                <Border Classes="Board" Grid.Row="2">
+                    <StackPanel Orientation="Horizontal">
                         <!--IsVisible чтобы не было бага с отображением контрола предметов и лишнего отступа-->
-                        <ItemsControl Name="ItemControl" Items="{Binding SelectedBoard.Columns}" IsVisible="{Binding SelectedBoard.Columns.Count}">
+                        <ItemsControl Name="ItemControl"
+									  Items="{Binding SelectedBoard.Columns}"
+									  IsVisible="{Binding SelectedBoard.Columns.Count}">
                             <ItemsControl.ItemsPanel>
                                 <ItemsPanelTemplate>
-                                    <StackPanel Orientation="Horizontal" Spacing="10" />
+                                    <StackPanel Orientation="Horizontal" />
                                 </ItemsPanelTemplate>
                             </ItemsControl.ItemsPanel>
 
@@ -59,8 +61,7 @@
                         </ItemsControl>
 
                         <Button Content="Добавить столбец" VerticalAlignment="Top"
-                                IsVisible="{Binding SelectedBoard, Converter={x:Static ObjectConverters.IsNotNull}}"
-                                Background="{DynamicResource Accent}">
+                                IsVisible="{Binding SelectedBoard, Converter={x:Static ObjectConverters.IsNotNull}}" Width="250">
                             <Button.Flyout>
                                 <Flyout Placement="Left">
                                     <TextBox Watermark="Введите имя столбца" Name="AddColumnTextBox"/>
