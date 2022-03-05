@@ -33,8 +33,8 @@
             <Grid RowDefinitions="auto,30,*">
                 <!--Заголовок и описание доски-->
                 <StackPanel Spacing="6" Grid.Row="0" >
-                    <TextBlock Classes="BoardHeading" Text="{Binding SelectedBoard.Name}" />
-                    <TextBlock Classes="BoardAccent" Text="{Binding SelectedBoard.Description}" />
+                    <TextBox Classes="BoardHeading" Text="{Binding SelectedBoard.Name}" HorizontalAlignment="Left"/>
+                    <TextBox Classes="BoardAccent" Text="{Binding SelectedBoard.Description}" HorizontalAlignment="Left" AcceptsReturn="True" />
                 </StackPanel>
                 
                 <!--Разделитель-->
@@ -60,7 +60,7 @@
                             </ItemsControl.ItemTemplate>
                         </ItemsControl>
 
-                        <Button Content="Добавить столбец" VerticalAlignment="Top"
+                        <Button Classes="Add" Content="Добавить столбец" VerticalAlignment="Top"
                                 IsVisible="{Binding SelectedBoard, Converter={x:Static ObjectConverters.IsNotNull}}" Width="250">
                             <Button.Flyout>
                                 <Flyout Placement="Left">

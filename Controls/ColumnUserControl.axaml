@@ -7,19 +7,17 @@
              xmlns:mock="using:kanban_project.DesignMock"
              xmlns:controls="using:kanban_project.Controls"
              x:Class="kanban_project.Controls.ColumnUserControl"
-             x:DataType="vm:ColumnViewModel"
-             x:CompileBindings="True"
              DragDrop.AllowDrop="True"
              Width="250">
     <Design.DataContext>
         <mock:ColumnMock />
     </Design.DataContext>
-    <ScrollViewer Name="CardScrollViewer"
+	<Border Classes="Column" CornerRadius="12" VerticalAlignment="Top">
+		<ScrollViewer Name="CardScrollViewer"
                   HorizontalScrollBarVisibility="Disabled"
                   VerticalScrollBarVisibility="Auto">
-        <Border CornerRadius="12" VerticalAlignment="Top">
             <StackPanel Margin="12">
-                <Border Background="{Binding Color}" HorizontalAlignment="Left" Padding="12,4,12,4" CornerRadius="100">
+                <Border Classes="ColumnTitle" HorizontalAlignment="Left">
                     <TextBlock Text="{Binding Name}" TextWrapping="Wrap"/>
                 </Border>
                 <ItemsControl Items="{Binding Cards}" IsVisible="{Binding Cards.Count}">
@@ -35,7 +33,7 @@
                     </ItemsControl.ItemTemplate>
                 </ItemsControl>
 
-                <Button Content="Добавить карточку" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center">
+                <Button Classes="Add" Content="Добавить карточку" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center">
                     <Button.Flyout>
                         <Flyout>
                             <TextBox Watermark="Введите имя карточки" Name="AddCardTextBox"/>
@@ -43,6 +41,6 @@
                     </Button.Flyout>
                 </Button>
             </StackPanel>
-        </Border>
-    </ScrollViewer>
+        </ScrollViewer>
+    </Border>
 </UserControl>
