@@ -1,96 +1,106 @@
 ﻿<Styles xmlns="https://github.com/avaloniaui"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
-    <Design.PreviewWith>
-        <Border Padding="20">
-            <!-- Add Controls for Previewer Here -->
-        </Border>
-    </Design.PreviewWith>
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:i="using:Avalonia.Xaml.Interactivity"
+        xmlns:b="using:kanban_project.Behaviors">
+	<Design.PreviewWith>
+		<Border Padding="20">
+			<!-- Add Controls for Previewer Here -->
+		</Border>
+	</Design.PreviewWith>
 
-    <Styles.Resources>
-        <Color x:Key="ThemeAccentColor">#C94E69</Color>
-        <Color x:Key="ThemeAccentColor2">#dfbe5b</Color>
-        <Color x:Key="ThemeAccentColor3">#f37f57</Color>
-        <Color x:Key="ThemeAccentColor4">#f37f57</Color>
-        <Color x:Key="ThemeAccentBadgeColor">#30F37F57</Color>
+	<StyleInclude Source="avares://Avalonia.Themes.Default/DefaultTheme.xaml"/>
+
+	<Styles.Resources>
+		<Color x:Key="ThemeAccentColor">#C94E69</Color>
+		<Color x:Key="ThemeAccentColor2">#dfbe5b</Color>
+		<Color x:Key="ThemeAccentColor3">#F4BE91</Color>
+		<Color x:Key="ThemeAccentColor4">#F3A757</Color>
+		<Color x:Key="ThemeAccentBadgeColor">#30F37F57</Color>
 
 		<Color x:Key="ThemeCardColor">#FFFFFF</Color>
 		<Color x:Key="ThemeColumnColor">#D2E2AD</Color>
-        <Color x:Key="ThemeBackgroundColor">#FFECECEC</Color>
-        <Color x:Key="ThemeBorderLowColor">#FFF3F3F3</Color>
-        <Color x:Key="ThemeBorderMidColor">#FFECECEC</Color>
-        <Color x:Key="ThemeBorderHighColor">#FFAAAAAA</Color>
+		<Color x:Key="ThemeBackgroundColor">#FFECECEC</Color>
+		<Color x:Key="ThemeBorderLowColor">#FFF3F3F3</Color>
+		<Color x:Key="ThemeBorderMidColor">#FFECECEC</Color>
+		<Color x:Key="ThemeBorderHighColor">#FFAAAAAA</Color>
 
-        <Color x:Key="ThemeControlLowColor">#FF868999</Color>
-        <Color x:Key="ThemeControlMidColor">#FFF5F5F5</Color>
-        <Color x:Key="ThemeControlMidHighColor">#FFC2C3C9</Color>
-        <Color x:Key="ThemeControlHighColor">#FF686868</Color>
-        <Color x:Key="ThemeControlVeryHighColor">#FF5B5B5B</Color>
+		<Color x:Key="ThemeControlLowColor">#FF868999</Color>
+		<Color x:Key="ThemeControlMidColor">#FFF5F5F5</Color>
+		<Color x:Key="ThemeControlMidHighColor">#FFC2C3C9</Color>
+		<Color x:Key="ThemeControlHighColor">#FF686868</Color>
+		<Color x:Key="ThemeControlVeryHighColor">#FF5B5B5B</Color>
 
-        <Color x:Key="ThemeControlHighlightLowColor">#FFF0F0F0</Color>
-        <Color x:Key="ThemeControlHighlightMidColor">#FFD0D0D0</Color>
-        <Color x:Key="ThemeControlHighlightHighColor">#FF808080</Color>
-        <Color x:Key="ThemeForegroundColor">#FF000000</Color>
-        <Color x:Key="ThemeForegroundLowColor">#FF808080</Color>
+		<Color x:Key="ThemeControlHighlightLowColor">#FFF0F0F0</Color>
+		<Color x:Key="ThemeControlHighlightMidColor">#FFD0D0D0</Color>
+		<Color x:Key="ThemeControlHighlightHighColor">#FF808080</Color>
+		<Color x:Key="ThemeForegroundColor">#FF000000</Color>
+		<Color x:Key="ThemeForegroundLowColor">#FF808080</Color>
 
-        <Color x:Key="HighlightBadgeColor">#307a48c0</Color>
-        <Color x:Key="HighlightColor">#A7C957</Color>
-        <Color x:Key="HighlightHoverColor">#B6D274</Color>
-        <Color x:Key="HighlightForegroundColor">#FFFFFFFF</Color>
-        <Color x:Key="ErrorColor">#FFFF0000</Color>
-        <Color x:Key="ErrorLowColor">#AAFF0000</Color>
+		<Color x:Key="HighlightBadgeColor">#307a48c0</Color>
+		<Color x:Key="HighlightColor">#A7C957</Color>
+		<Color x:Key="HighlightHoverColor">#B6D274</Color>
+		<Color x:Key="HighlightForegroundColor">#FFFFFFFF</Color>
+		<Color x:Key="ErrorColor">#FFFF0000</Color>
+		<Color x:Key="ErrorLowColor">#AAFF0000</Color>
 
 		<SolidColorBrush x:Key="ThemeCardBrush" Color="{DynamicResource ThemeCardColor}"/>
 		<SolidColorBrush x:Key="ThemeColumnBrush" Color="{DynamicResource ThemeColumnColor}"/>
-		
-        <SolidColorBrush x:Key="ThemeBackgroundBrush" Color="{DynamicResource ThemeBackgroundColor}"/>
-        <SolidColorBrush x:Key="ThemeBorderLowBrush" Color="{DynamicResource ThemeBorderLowColor}"/>
-        <SolidColorBrush x:Key="ThemeBorderMidBrush" Color="{DynamicResource ThemeBorderMidColor}"/>
-        <SolidColorBrush x:Key="ThemeBorderHighBrush" Color="{DynamicResource ThemeBorderHighColor}"/>
-        <SolidColorBrush x:Key="ThemeControlLowBrush" Color="{DynamicResource ThemeControlLowColor}"/>
-        <SolidColorBrush x:Key="ThemeControlMidBrush" Color="{DynamicResource ThemeControlMidColor}"/>
-        <SolidColorBrush x:Key="ThemeControlMidHighBrush" Color="{DynamicResource ThemeControlMidHighColor}"/>
-        <SolidColorBrush x:Key="ThemeControlHighBrush" Color="{DynamicResource ThemeControlHighColor}"/>
-        <SolidColorBrush x:Key="ThemeControlVeryHighBrush" Color="{DynamicResource ThemeControlVeryHighColor}"/>
-        <SolidColorBrush x:Key="ThemeControlHighlightLowBrush" Color="{DynamicResource ThemeControlHighlightLowColor}"/>
-        <SolidColorBrush x:Key="ThemeControlHighlightMidBrush" Color="{DynamicResource ThemeControlHighlightMidColor}"/>
-        <SolidColorBrush x:Key="ThemeControlHighlightHighBrush" Color="{DynamicResource ThemeControlHighlightHighColor}"/>
-        <SolidColorBrush x:Key="ThemeForegroundBrush" Color="{DynamicResource ThemeForegroundColor}"/>
-        <SolidColorBrush x:Key="ThemeForegroundLowBrush" Color="{DynamicResource ThemeForegroundLowColor}"/>
 
-        <SolidColorBrush x:Key="HighlightBrush" Color="{DynamicResource HighlightColor}"/>
-        <SolidColorBrush x:Key="HighlightBadgeBrush" Color="{DynamicResource HighlightBadgeColor}"/>
-        <SolidColorBrush x:Key="HighlightHoverBrush" Color="{DynamicResource HighlightHoverColor}"/>
-        <SolidColorBrush x:Key="HighlightForegroundBrush" Color="{DynamicResource HighlightForegroundColor}"/>
-        <SolidColorBrush x:Key="ThemeAccentBrush" Color="{DynamicResource ThemeAccentColor}"/>
-        <SolidColorBrush x:Key="ThemeAccentBrush2" Color="{DynamicResource ThemeAccentColor2}"/>
-        <SolidColorBrush x:Key="ThemeAccentBrush3" Color="{DynamicResource ThemeAccentColor3}"/>
-        <SolidColorBrush x:Key="ThemeAccentBrush4" Color="{DynamicResource ThemeAccentColor4}"/>
-        <SolidColorBrush x:Key="ThemeAccentBadgeBrush" Color="{DynamicResource ThemeAccentBadgeColor}"/>
-        <SolidColorBrush x:Key="ErrorBrush" Color="{DynamicResource ErrorColor}"/>
-        <SolidColorBrush x:Key="ErrorLowBrush" Color="{DynamicResource ErrorLowColor}"/>
+		<SolidColorBrush x:Key="ThemeBackgroundBrush" Color="{DynamicResource ThemeBackgroundColor}"/>
+		<SolidColorBrush x:Key="ThemeBorderLowBrush" Color="{DynamicResource ThemeBorderLowColor}"/>
+		<SolidColorBrush x:Key="ThemeBorderMidBrush" Color="{DynamicResource ThemeBorderMidColor}"/>
+		<SolidColorBrush x:Key="ThemeBorderHighBrush" Color="{DynamicResource ThemeBorderHighColor}"/>
+		<SolidColorBrush x:Key="ThemeControlLowBrush" Color="{DynamicResource ThemeControlLowColor}"/>
+		<SolidColorBrush x:Key="ThemeControlMidBrush" Color="{DynamicResource ThemeControlMidColor}"/>
+		<SolidColorBrush x:Key="ThemeControlMidHighBrush" Color="{DynamicResource ThemeControlMidHighColor}"/>
+		<SolidColorBrush x:Key="ThemeControlHighBrush" Color="{DynamicResource ThemeControlHighColor}"/>
+		<SolidColorBrush x:Key="ThemeControlVeryHighBrush" Color="{DynamicResource ThemeControlVeryHighColor}"/>
+		<SolidColorBrush x:Key="ThemeControlHighlightLowBrush" Color="{DynamicResource ThemeControlHighlightLowColor}"/>
+		<SolidColorBrush x:Key="ThemeControlHighlightMidBrush" Color="{DynamicResource ThemeControlHighlightMidColor}"/>
+		<SolidColorBrush x:Key="ThemeControlHighlightHighBrush" Color="{DynamicResource ThemeControlHighlightHighColor}"/>
+		<SolidColorBrush x:Key="ThemeForegroundBrush" Color="{DynamicResource ThemeForegroundColor}"/>
+		<SolidColorBrush x:Key="ThemeForegroundLowBrush" Color="{DynamicResource ThemeForegroundLowColor}"/>
 
-        <SolidColorBrush x:Key="NotificationCardBackgroundBrush" Color="#444444" Opacity="0.75"/>
-        <SolidColorBrush x:Key="NotificationCardInformationBackgroundBrush" Color="#007ACC" Opacity="0.75"/>
-        <SolidColorBrush x:Key="NotificationCardSuccessBackgroundBrush" Color="#1F9E45" Opacity="0.75"/>
-        <SolidColorBrush x:Key="NotificationCardWarningBackgroundBrush" Color="#FDB328" Opacity="0.75"/>
-        <SolidColorBrush x:Key="NotificationCardErrorBackgroundBrush" Color="#BD202C" Opacity="0.75"/>
+		<SolidColorBrush x:Key="HighlightBrush" Color="{DynamicResource HighlightColor}"/>
+		<SolidColorBrush x:Key="HighlightBadgeBrush" Color="{DynamicResource HighlightBadgeColor}"/>
+		<SolidColorBrush x:Key="HighlightHoverBrush" Color="{DynamicResource HighlightHoverColor}"/>
+		<SolidColorBrush x:Key="HighlightForegroundBrush" Color="{DynamicResource HighlightForegroundColor}"/>
+		<SolidColorBrush x:Key="ThemeAccentBrush" Color="{DynamicResource ThemeAccentColor}"/>
+		<SolidColorBrush x:Key="ThemeAccentBrush2" Color="{DynamicResource ThemeAccentColor2}"/>
+		<SolidColorBrush x:Key="ThemeAccentBrush3" Color="{DynamicResource ThemeAccentColor3}"/>
+		<SolidColorBrush x:Key="ThemeAccentBrush4" Color="{DynamicResource ThemeAccentColor4}"/>
+		<SolidColorBrush x:Key="ThemeAccentBadgeBrush" Color="{DynamicResource ThemeAccentBadgeColor}"/>
+		<SolidColorBrush x:Key="ErrorBrush" Color="{DynamicResource ErrorColor}"/>
+		<SolidColorBrush x:Key="ErrorLowBrush" Color="{DynamicResource ErrorLowColor}"/>
 
-        <SolidColorBrush x:Key="DatePickerFlyoutPresenterHighlightFill" Color="{DynamicResource ThemeAccentColor}" Opacity="0.4" />
-        <SolidColorBrush x:Key="TimePickerFlyoutPresenterHighlightFill" Color="{DynamicResource ThemeAccentColor}" Opacity="0.4" />
+		<SolidColorBrush x:Key="NotificationCardBackgroundBrush" Color="#444444" Opacity="0.75"/>
+		<SolidColorBrush x:Key="NotificationCardInformationBackgroundBrush" Color="#007ACC" Opacity="0.75"/>
+		<SolidColorBrush x:Key="NotificationCardSuccessBackgroundBrush" Color="#1F9E45" Opacity="0.75"/>
+		<SolidColorBrush x:Key="NotificationCardWarningBackgroundBrush" Color="#FDB328" Opacity="0.75"/>
+		<SolidColorBrush x:Key="NotificationCardErrorBackgroundBrush" Color="#BD202C" Opacity="0.75"/>
 
-        <SolidColorBrush x:Key="ThemeControlTransparentBrush" Color="Transparent" />
-    </Styles.Resources>
+		<SolidColorBrush x:Key="DatePickerFlyoutPresenterHighlightFill" Color="{DynamicResource ThemeAccentColor}" Opacity="0.4" />
+		<SolidColorBrush x:Key="TimePickerFlyoutPresenterHighlightFill" Color="{DynamicResource ThemeAccentColor}" Opacity="0.4" />
 
-    <StyleInclude Source="avares://Avalonia.Themes.Default/DefaultTheme.xaml"/>
-    
-    <Style Selector="Border.Card">
-        <Setter Property="Padding" Value="10" />
-        <Setter Property="CornerRadius" Value="5" />
-        <Setter Property="BorderThickness" Value="2" />
-        <Setter Property="BorderBrush" Value="{DynamicResource ThemeCardBrush}" />
-        <Setter Property="Background" Value="{DynamicResource ThemeCardBrush}" />
-    </Style>
+		<SolidColorBrush x:Key="ThemeControlTransparentBrush" Color="Transparent" />
+
+		<DrawingImage x:Key="FluentIconsFilled.add_filled">
+			<GeometryDrawing Brush="Black" Geometry="M14.5,13 L14.5,3.75378577 C14.5,3.33978577 14.164,3.00378577 13.75,3.00378577 C13.336,3.00378577 13,3.33978577 13,3.75378577 L13,13 L3.75387573,13 C3.33987573,13 3.00387573,13.336 3.00387573,13.75 C3.00387573,14.164 3.33987573,14.5 3.75387573,14.5 L13,14.5 L13,23.7523651 C13,24.1663651 13.336,24.5023651 13.75,24.5023651 C14.164,24.5023651 14.5,24.1663651 14.5,23.7523651 L14.5,14.5 L23.7498262,14.5030754 C24.1638262,14.5030754 24.4998262,14.1670754 24.4998262,13.7530754 C24.4998262,13.3390754 24.1638262,13.0030754 23.7498262,13.0030754 L14.5,13 Z" />
+		</DrawingImage>
+		<DrawingImage x:Key="Ionicons.CloseMD">
+			<GeometryDrawing  Brush="Black" Geometry="M405 136.798L375.202 107 256 226.202 136.798 107 107 136.798 226.202 256 107 375.202 136.798 405 256 285.798 375.202 405 405 375.202 285.798 256z" />
+		</DrawingImage>
+	</Styles.Resources>
+
+	<Style Selector="Border.Card">
+		<Setter Property="Padding" Value="10" />
+		<Setter Property="CornerRadius" Value="5" />
+		<Setter Property="BorderThickness" Value="2" />
+		<Setter Property="BorderBrush" Value="{DynamicResource ThemeCardBrush}" />
+		<Setter Property="Background" Value="{DynamicResource ThemeCardBrush}" />
+	</Style>
 	<Style Selector="Border.Column">
+		<Setter Property="CornerRadius" Value="5" />
 		<Setter Property="Background" Value="{DynamicResource ThemeColumnBrush}" />
 	</Style>
 	<Style Selector="Border.ColumnTitle">
@@ -98,115 +108,142 @@
 		<Setter Property="CornerRadius" Value="100" />
 		<Setter Property="Background" Value="{DynamicResource ThemeAccentBrush}" />
 	</Style>
-    <Style Selector="Border.ColumnTitle > TextBlock">
-        <Setter Property="Foreground" Value="{DynamicResource HighlightForegroundBrush}" />
-    </Style>
+	<Style Selector="Border.ColumnTitle > TextBlock">
+		<Setter Property="Foreground" Value="{DynamicResource HighlightForegroundBrush}" />
+	</Style>
 	<Style Selector="Border.Board">
-		<Setter Property="Padding" Value="10" />
 		<Setter Property="CornerRadius" Value="5" />
 		<Setter Property="BorderThickness" Value="2" />
 		<Setter Property="BorderBrush" Value="{DynamicResource ThemeControlTransparentBrush}" />
 		<Setter Property="Background" Value="{DynamicResource ThemeControlTransparentBrush}" />
 	</Style>
-	
-    <Style Selector="Button">
-        <Setter Property="BorderThickness" Value="0" />
-        <Setter Property="Padding" Value="14" />
-        <Setter Property="Margin" Value="0 5" />
-        <Setter Property="Background" Value="{DynamicResource HighlightBrush}" />
-        <Setter Property="Foreground" Value="{DynamicResource HighlightForegroundBrush}" />
-        <Setter Property="CornerRadius" Value="5" />
-    </Style>
-    <Style Selector="Button:pointerover">
-        <Setter Property="Background" Value="{DynamicResource HighlightHoverBrush}" />
-    </Style>
-    <Style Selector="Button:pressed">
-        <Setter Property="Background" Value="{DynamicResource HighlightBrush}" />
-    </Style>
 
-    <Style Selector="Button.Primary">
-        <Setter Property="Background" Value="{DynamicResource ThemeAccentBrush}" />
-        <Setter Property="Foreground" Value="{DynamicResource HighlightForegroundBrush}" />
-        <Setter Property="CornerRadius" Value="5" />
-    </Style>
-    <Style Selector="Button.Primary:pointerover">
-        <Setter Property="Background" Value="{DynamicResource ThemeAccentBrush4}" />
-    </Style>
-    <Style Selector="Button.Primary:pressed">
-        <Setter Property="Background" Value="{DynamicResource ThemeAccentBrush}" />
-    </Style>
+	<Style Selector="Button">
+		<Setter Property="BorderThickness" Value="0" />
+		<Setter Property="Padding" Value="14" />
+		<Setter Property="Margin" Value="0 5" />
+		<Setter Property="Background" Value="{DynamicResource HighlightBrush}" />
+		<Setter Property="Foreground" Value="{DynamicResource HighlightForegroundBrush}" />
+		<Setter Property="CornerRadius" Value="5" />
+	</Style>
+	<Style Selector="Button:pointerover">
+		<Setter Property="Background" Value="{DynamicResource HighlightHoverBrush}" />
+	</Style>
+	<Style Selector="Button:pressed">
+		<Setter Property="Background" Value="{DynamicResource HighlightBrush}" />
+	</Style>
 
-    <Style Selector="TabControl">
-        <Setter Property="Background" Value="{DynamicResource ThemeCardBrush}"/>
-    </Style>
-    <Style Selector="TabControl WrapPanel">
-        <Setter Property="Background" Value="{DynamicResource ThemeAccentBrush2}"/>
-    </Style>
+	<Style Selector="Button.Primary">
+		<Setter Property="Background" Value="{DynamicResource ThemeAccentBrush}" />
+		<Setter Property="Foreground" Value="{DynamicResource HighlightForegroundBrush}" />
+		<Setter Property="CornerRadius" Value="5" />
+	</Style>
+	<Style Selector="Button.Primary:pointerover">
+		<Setter Property="Background" Value="{DynamicResource ThemeAccentBrush4}" />
+	</Style>
+	<Style Selector="Button.Primary:pressed">
+		<Setter Property="Background" Value="{DynamicResource ThemeAccentBrush}" />
+	</Style>
 
-    <Style Selector="TabItem">
-        <Setter Property="Foreground" Value="{DynamicResource HighlightForegroundBrush}" />
-        <Setter Property="FontSize" Value="12"/>
-        <Setter Property="VerticalAlignment" Value="Center"/>
-        <Setter Property="Background" Value="{DynamicResource ThemeAccentBrush2}"/>
-        <Setter Property="Margin" Value="0 0 0 0"/>
-        <Setter Property="Padding" Value="14 0"/>
-        <Setter Property="BorderThickness" Value="0 0 0 2"/>
-        <Setter Property="BorderBrush" Value="Transparent"/>
-        <Setter Property="VerticalContentAlignment" Value="Center"/>
-        <Setter Property="Height" Value="54"/>
-    </Style>
-    <Style Selector="TabItem > TextBlock">
-        <Setter Property="Foreground" Value="{DynamicResource HighlightForegroundBrush}"/>
-    </Style>
 
-    <Style Selector="TabItem:pointerover /template/ ContentPresenter#PART_ContentPresenter">
-        <Setter Property="Background" Value="{DynamicResource ThemeAccentBrush4}"/>
-    </Style>
-    <Style Selector="TabItem:selected /template/ ContentPresenter#PART_ContentPresenter">
-        <Setter Property="Background" Value="{DynamicResource ThemeAccentBrush2}"/>
-    </Style>
-    <Style Selector="TabItem:selected:pointerover /template/ ContentPresenter#PART_ContentPresenter">
-        <Setter Property="Background" Value="{DynamicResource ThemeAccentBrush4}"/>
-    </Style>
+	<Style Selector="Button.Adder">
+		<Setter Property="Height" Value="24"/>
+		<Setter Property="Width" Value="24"/>
+		<Setter Property="Margin" Value="6, 0"/>
+		<Setter Property="Padding" Value="5"/>
+		<Setter Property="Content">
+			<Template>
+				<Image Source="{DynamicResource FluentIconsFilled.add_filled}"/>
+			</Template>
+		</Setter>
+	</Style>
+	<Style Selector="Button.Close">
+		<Setter Property="Background" Value="{DynamicResource ThemeControlTransparentBrush}"/>
+		<Setter Property="Height" Value="20"/>
+		<Setter Property="Width" Value="20"/>
+		<Setter Property="Margin" Value="6, 0, 0, 0"/>
+		<Setter Property="Padding" Value="5"/>
+		<Setter Property="Content">
+			<Template>
+				<Image Source="{DynamicResource Ionicons.CloseMD}"/>
+			</Template>
+		</Setter>
+	</Style>
 
-    <Style Selector="TabItem:selected /template/ ContentPresenter#PART_ContentPresenter">
-        <Setter Property="BorderBrush" Value="{DynamicResource HighlightForegroundBrush}"/>
-    </Style>
+	<Style Selector="TabControl">
+		<Setter Property="Background" Value="{DynamicResource ThemeBackgroundBrush}"/>
+	</Style>
 
-    <Style Selector="TextBlock">
-        <Setter Property="Foreground" Value="{DynamicResource ThemeForegroundBrush}" />
-        <Setter Property="FontFamily" Value="Ubuntu" />
-        <Setter Property="FontSize" Value="14" />
-    </Style>
-    <Style Selector="TextBlock.Heading">
-        <Setter Property="Margin" Value="0 10 0 5" />
-        <Setter Property="FontWeight" Value="SemiBold" />
-        <Setter Property="Foreground" Value="{DynamicResource ThemeForegroundBrush}" />
-        <Setter Property="FontSize" Value="15" />
-    </Style>
-    <Style Selector="TextBlock.Caption">
-        <Setter Property="Foreground" Value="{DynamicResource ThemeControlHighBrush}" />
-    </Style>
-    <Style Selector="TextBlock.Accent">
-        <Setter Property="Foreground" Value="{DynamicResource HighlightBrush}" />
-    </Style>
+	<Style Selector="TabItem">
+		<Setter Property="Foreground" Value="{DynamicResource HighlightForegroundBrush}" />
+		<Setter Property="FontSize" Value="12"/>
+		<Setter Property="VerticalAlignment" Value="Center"/>
+		<Setter Property="Background" Value="{DynamicResource ThemeAccentBrush3}"/>
+		<Setter Property="Margin" Value="0 0 0 0"/>
+		<Setter Property="Padding" Value="12 0"/>
+		<Setter Property="CornerRadius" Value="8, 0"/>
+		<Setter Property="BorderThickness" Value="0 0 0 0"/>
+		<Setter Property="BorderBrush" Value="Transparent"/>
+		<Setter Property="VerticalContentAlignment" Value="Center"/>
+		<Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+		<Setter Property="MinHeight" Value="32"/>
+		<Setter Property="Interaction.Behaviors">
+			<BehaviorCollectionTemplate>
+				<BehaviorCollection>
+					<b:ItemDragBehavior Orientation="Horizontal"/>
+				</BehaviorCollection>
+			</BehaviorCollectionTemplate>
+		</Setter>
+	</Style>
+	<Style Selector="TabItem > TextBlock">
+		<Setter Property="Foreground" Value="{DynamicResource HighlightForegroundBrush}"/>
+	</Style>
+	<Style Selector="TabItem:pointerover /template/ ContentPresenter#PART_ContentPresenter">
+		<Setter Property="Background" Value="{DynamicResource ThemeAccentBrush3}"/>
+	</Style>
+	<Style Selector="TabItem:selected /template/ ContentPresenter#PART_ContentPresenter">
+		<Setter Property="Background" Value="{DynamicResource ThemeAccentBrush4}"/>
+		<Setter Property="BorderThickness" Value="0, 0, 0, 2"/>
+		<Setter Property="BorderBrush" Value="{DynamicResource ThemeAccentBrush}"/>
+	</Style>
+	<Style Selector="TabItem:selected:pointerover /template/ ContentPresenter#PART_ContentPresenter">
+		<Setter Property="Background" Value="{DynamicResource ThemeAccentBrush4}"/>
+	</Style>
 
-    <Style Selector="TextBox">
-        <Setter Property="FontFamily" Value="Ubuntu" />
-        <Setter Property="FontSize" Value="14" />
-        <Setter Property="BorderThickness" Value="0" />
-        <Setter Property="Foreground" Value="{DynamicResource ThemeForegroundBrush}" />
-        <Setter Property="Background" Value="{DynamicResource ThemeBorderLowBrush}" />
-        <Setter Property="Padding" Value="10" />
-        <Setter Property="Margin" Value="0 5" />
-        <Setter Property="CornerRadius" Value="5" />
-    </Style>
-    <Style Selector="TextBox:pointerover /template/ Border">
-        <Setter Property="Background" Value="{DynamicResource ThemeBorderMidBrush}" />
-    </Style>
-    <Style Selector="TextBox:focus /template/ Border">
-        <Setter Property="Background" Value="{DynamicResource ThemeBorderMidBrush}" />
-    </Style>
+	<Style Selector="TextBlock">
+		<Setter Property="Foreground" Value="{DynamicResource ThemeForegroundBrush}" />
+		<Setter Property="FontFamily" Value="Ubuntu" />
+		<Setter Property="FontSize" Value="14" />
+	</Style>
+	<Style Selector="TextBlock.Heading">
+		<Setter Property="Margin" Value="0 10 0 5" />
+		<Setter Property="FontWeight" Value="SemiBold" />
+		<Setter Property="Foreground" Value="{DynamicResource ThemeForegroundBrush}" />
+		<Setter Property="FontSize" Value="15" />
+	</Style>
+	<Style Selector="TextBlock.Caption">
+		<Setter Property="Foreground" Value="{DynamicResource ThemeControlHighBrush}" />
+	</Style>
+	<Style Selector="TextBlock.Accent">
+		<Setter Property="Foreground" Value="{DynamicResource HighlightBrush}" />
+	</Style>
+
+	<Style Selector="TextBox">
+		<Setter Property="FontFamily" Value="Ubuntu" />
+		<Setter Property="FontSize" Value="14" />
+		<Setter Property="BorderThickness" Value="0" />
+		<Setter Property="Foreground" Value="{DynamicResource ThemeForegroundBrush}" />
+		<Setter Property="Background" Value="{DynamicResource ThemeBorderLowBrush}" />
+		<Setter Property="Padding" Value="10" />
+		<Setter Property="Margin" Value="0 5" />
+		<Setter Property="CornerRadius" Value="5" />
+	</Style>
+	<Style Selector="TextBox:pointerover /template/ Border">
+		<Setter Property="Background" Value="{DynamicResource ThemeBorderMidBrush}" />
+	</Style>
+	<Style Selector="TextBox:focus /template/ Border">
+		<Setter Property="Background" Value="{DynamicResource ThemeBorderMidBrush}" />
+	</Style>
 
 	<Style Selector="TextBox.Heading">
 		<Setter Property="Margin" Value="0 10 0 5" />
@@ -232,35 +269,35 @@
 		<Setter Property="FontSize" Value="15" />
 	</Style>
 
-    <Style Selector="TextBox.Badge">
-        <Setter Property="IsEnabled" Value="False"/>
-        <Setter Property="IsReadOnly" Value="True"/>
-        <Setter Property="Background" Value="{DynamicResource HighlightBadgeBrush}"/>
-        <Setter Property="Foreground" Value="{DynamicResource HighlightBrush}"/>
-        <Setter Property="HorizontalAlignment" Value="Left" />
-        <Setter Property="Padding" Value="10 5" />
-    </Style>
-    <Style Selector="TextBox.Badge:disabled /template/ Border#border">
-        <Setter Property="Opacity" Value="1" />
-    </Style>
+	<Style Selector="TextBox.Badge">
+		<Setter Property="IsEnabled" Value="False"/>
+		<Setter Property="IsReadOnly" Value="True"/>
+		<Setter Property="Background" Value="{DynamicResource HighlightBadgeBrush}"/>
+		<Setter Property="Foreground" Value="{DynamicResource HighlightBrush}"/>
+		<Setter Property="HorizontalAlignment" Value="Left" />
+		<Setter Property="Padding" Value="10 5" />
+	</Style>
+	<Style Selector="TextBox.Badge:disabled /template/ Border#border">
+		<Setter Property="Opacity" Value="1" />
+	</Style>
 
-    <Style Selector="TextBox.PrimaryBadge">
-        <Setter Property="IsEnabled" Value="False"/>
-        <Setter Property="IsReadOnly" Value="True"/>
-        <Setter Property="Background" Value="{DynamicResource ThemeAccentBadgeBrush}"/>
-        <Setter Property="Foreground" Value="{DynamicResource ThemeAccentBrush}"/>
-        <Setter Property="HorizontalAlignment" Value="Left" />
-        <Setter Property="Padding" Value="10 5" />
-    </Style>
-    <Style Selector="TextBox.PrimaryBadge:disabled /template/ Border#border">
-        <Setter Property="Opacity" Value="1" />
-    </Style>
-	
-    <Style Selector="StackPanel">
-        <Setter Property="Spacing" Value="12" />
-    </Style>
+	<Style Selector="TextBox.PrimaryBadge">
+		<Setter Property="IsEnabled" Value="False"/>
+		<Setter Property="IsReadOnly" Value="True"/>
+		<Setter Property="Background" Value="{DynamicResource ThemeAccentBadgeBrush}"/>
+		<Setter Property="Foreground" Value="{DynamicResource ThemeAccentBrush}"/>
+		<Setter Property="HorizontalAlignment" Value="Left" />
+		<Setter Property="Padding" Value="10 5" />
+	</Style>
+	<Style Selector="TextBox.PrimaryBadge:disabled /template/ Border#border">
+		<Setter Property="Opacity" Value="1" />
+	</Style>
 
-    <Style Selector="Panel.Divider">
-        <Setter Property="Background" Value="{DynamicResource ThemeForegroundBrush}" />
-    </Style>
+	<Style Selector="StackPanel">
+		<Setter Property="Spacing" Value="12" />
+	</Style>
+
+	<Style Selector="Panel.Divider">
+		<Setter Property="Background" Value="{DynamicResource ThemeForegroundBrush}" />
+	</Style>
 </Styles>
