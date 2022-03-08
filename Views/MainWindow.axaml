@@ -1,76 +1,38 @@
 <Window xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:vm="clr-namespace:kanban_project.ViewModels"
-        xmlns:mock="clr-namespace:kanban_project.DesignMock"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="350"
-        xmlns:controls="clr-namespace:kanban_project.Controls"
         x:Class="kanban_project.Views.MainWindow"
+        xmlns:b="using:kanban_project.Behaviors"
+        xmlns:v="using:kanban_project.Views"
+        xmlns:vm="clr-namespace:kanban_project.ViewModels"
+        xmlns:mock="clr-namespace:kanban_project.DesignMock"
         Icon="/Assets/avalonia-logo.ico" Title="Kanban Board" >
-	
     <Design.DataContext>
         <mock:MainWindowMock />
     </Design.DataContext>
-
     <DockPanel>
-        <Grid DockPanel.Dock="Top">
-            <TabControl Items="{Binding Boards}">
-                <TabControl.ItemTemplate>
-                    <DataTemplate>
-                        <TextBlock Text="{Binding Name}" />
-                    </DataTemplate>
-                </TabControl.ItemTemplate>
-                <TabControl.ContentTemplate>
-                    <DataTemplate>
-                        <Panel />
-                    </DataTemplate>
-                </TabControl.ContentTemplate>
-            </TabControl>
-        </Grid>
-
-        <ScrollViewer Name="ColumnScrollViewer" Padding="30" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Disabled">
-            <Grid RowDefinitions="auto,30,*">
-                <!--Заголовок и описание доски-->
-                <StackPanel Spacing="6" Grid.Row="0" >
-                    <TextBox Classes="BoardHeading" Text="{Binding SelectedBoard.Name}" HorizontalAlignment="Left"/>
-                    <TextBox Classes="BoardAccent" Text="{Binding SelectedBoard.Description}" HorizontalAlignment="Left" AcceptsReturn="True" />
-                </StackPanel>
-                
-                <!--Разделитель-->
-                <Panel Grid.Row="1" />
-                
-                <!--Контейнер со столбцами и кнопкой-->
-                <Border Classes="Board" Grid.Row="2">
-                    <StackPanel Orientation="Horizontal">
-                        <!--IsVisible чтобы не было бага с отображением контрола предметов и лишнего отступа-->
-                        <ItemsControl Name="ItemControl"
-									  Items="{Binding SelectedBoard.Columns}"
-									  IsVisible="{Binding SelectedBoard.Columns.Count}">
-                            <ItemsControl.ItemsPanel>
-                                <ItemsPanelTemplate>
-                                    <StackPanel Orientation="Horizontal" />
-                                </ItemsPanelTemplate>
-                            </ItemsControl.ItemsPanel>
-
-                            <ItemsControl.ItemTemplate>
-                                <DataTemplate>
-                                    <controls:ColumnUserControl DataContext="{Binding}"/>
-                                </DataTemplate>
-                            </ItemsControl.ItemTemplate>
-                        </ItemsControl>
-
-                        <Button Classes="Add" Content="Добавить столбец" VerticalAlignment="Top"
-                                IsVisible="{Binding SelectedBoard, Converter={x:Static ObjectConverters.IsNotNull}}" Width="250">
-                            <Button.Flyout>
-                                <Flyout Placement="Left">
-                                    <TextBox Watermark="Введите имя столбца" Name="AddColumnTextBox"/>
-                                </Flyout>
-                            </Button.Flyout>
-                        </Button>
-                    </StackPanel>
-                </Border>
-            </Grid>
-        </ScrollViewer>
+        <TabControl DockPanel.Dock="Top" Items="{Binding Boards}" SelectedItem="{Binding SelectedBoard}">
+            <TabControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                        <UniformGrid Rows="1" HorizontalAlignment="Left">
+                            <Button Classes="Adder"
+                                    VerticalAlignment="Center"
+                                    Command="{Binding AddBoard}"
+                                    ToolTip.Tip="Добавить доску"
+                                    Grid.Column="999"/>
+                        </UniformGrid>
+                </ItemsPanelTemplate>
+            </TabControl.ItemsPanel>
+            <TabControl.ItemTemplate>
+                <DataTemplate>
+                    <DockPanel>
+                        <TextBlock Text="{Binding Name}" ToolTip.Tip="{Binding Name}" TextTrimming="CharacterEllipsis"/>
+                        <Button Classes="Close" IsVisible="{Binding IsSelected}" Command="{Binding Delete}" ToolTip.Tip="Удалить доску" HorizontalAlignment="Right" DockPanel.Dock="Right"/>
+                    </DockPanel>
+                </DataTemplate>
+            </TabControl.ItemTemplate>
+        </TabControl>
     </DockPanel>
 </Window>

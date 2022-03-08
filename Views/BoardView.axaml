@@ -1,0 +1,33 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="kanban_project.Views.BoardView">
+    <ScrollViewer Name="ColumnScrollViewer" Padding="30" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Disabled">
+        <Grid RowDefinitions="auto,30,*">
+            <StackPanel Spacing="6" Grid.Row="0" >
+                <TextBox Classes="BoardHeading" Text="{Binding Name}" HorizontalAlignment="Left"/>
+                <TextBox Classes="BoardAccent" Text="{Binding Description}" HorizontalAlignment="Left" AcceptsReturn="True"/>
+            </StackPanel>
+            <Border Classes="Board" Grid.Row="2">
+                <StackPanel Orientation="Horizontal">
+                    <ItemsControl Name="ItemControl" Items="{Binding Columns}" IsVisible="{Binding Columns.Count}">
+                        <ItemsControl.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <StackPanel Orientation="Horizontal"/>
+                            </ItemsPanelTemplate>
+                        </ItemsControl.ItemsPanel>
+                    </ItemsControl>
+                    <Button Classes="Add" Content="Добавить столбец" VerticalAlignment="Top" Width="250">
+                        <Button.Flyout>
+                            <Flyout Placement="Left">
+                                <TextBox Name="AddColumnTextBox" Watermark="Введите имя столбца"/>
+                            </Flyout>
+                        </Button.Flyout>
+                    </Button>
+                </StackPanel>
+            </Border>
+        </Grid>
+    </ScrollViewer>
+</UserControl>

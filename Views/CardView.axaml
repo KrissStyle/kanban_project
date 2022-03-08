@@ -3,9 +3,10 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d" d:DesignWidth="200"
+			 xmlns:b="using:kanban_project.Behaviors"
              xmlns:vm="using:kanban_project.ViewModels"
              xmlns:mock="using:kanban_project.DesignMock"
-             x:Class="kanban_project.Controls.CardUserControl"
+             x:Class="kanban_project.Views.CardView"
 			 Tapped="ShowDetailedCardDialog">
 	<Design.DataContext>
 		<mock:CardMock />
@@ -13,8 +14,7 @@
 	<Border Classes="Card">
 		<StackPanel>
 			<TextBlock Classes="Header" Text="{Binding Name}" TextWrapping="Wrap" />
-			<TextBlock Classes="Caption" Text="{Binding Description}" TextWrapping="Wrap"
-					   TextTrimming="CharacterEllipsis" MaxLines="2"
+			<TextBlock Classes="Caption" Text="{Binding Description}" TextWrapping="Wrap" TextTrimming="CharacterEllipsis" MaxLines="2"
 					   IsVisible="{Binding Description, Converter={x:Static StringConverters.IsNotNullOrEmpty}}"/>
 		</StackPanel>
 	</Border>

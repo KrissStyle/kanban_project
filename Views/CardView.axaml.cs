@@ -1,18 +1,17 @@
 using Avalonia.Controls;
 using Avalonia.Input;
 using Avalonia.Markup.Xaml;
-using kanban_project.Views.Popups;
 using kanban_project.ViewModels;
 using System;
 using Avalonia;
 using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Interactivity;
 
-namespace kanban_project.Controls
+namespace kanban_project.Views
 {
-    public partial class CardUserControl : UserControl
+    public partial class CardView : UserControl
     {
-        public CardUserControl()
+        public CardView()
         {
             InitializeComponent();
         }
@@ -21,7 +20,7 @@ namespace kanban_project.Controls
         {
             var card = DataContext as CardViewModel;
             var details = new DetailedCardViewModel(DataContext as CardViewModel);
-            DetailedCardPopUpWindow popup = new DetailedCardPopUpWindow() { DataContext = details };
+            DetailedCardWindow popup = new DetailedCardWindow() { DataContext = details };
 
             if (Application.Current.ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
             {

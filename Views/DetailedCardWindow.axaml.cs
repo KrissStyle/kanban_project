@@ -6,21 +6,16 @@ using kanban_project.ViewModels;
 using ReactiveUI;
 using System.ComponentModel;
 
-namespace kanban_project.Views.Popups
+namespace kanban_project.Views
 {
-    public partial class DetailedCardPopUpWindow : Window
+    public partial class DetailedCardWindow : Window
     {
-        public DetailedCardPopUpWindow()
+        public DetailedCardWindow()
         {
             InitializeComponent();
 #if DEBUG
             this.AttachDevTools();
 #endif
-        }
-
-        public DetailedCardPopUpWindow(CardViewModel cardViewModel) : this()
-        {
-            this.DataContext = cardViewModel;
         }
 
         private void InitializeComponent()

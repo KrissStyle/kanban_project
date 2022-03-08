@@ -87,5 +87,10 @@ namespace kanban_project.ViewModels
             Cards.Remove(card);
             //save
         }
+
+        public void Delete()
+        {
+            Parent.DeleteColumn(this);
+        }
     }
 }

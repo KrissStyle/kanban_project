@@ -21,6 +21,7 @@ namespace kanban_project.ViewModels
         }
 
         public BoardModel Model { get; set; }
+        public MainWindowViewModel Parent { get; set; }
 
         private ObservableCollection<ColumnViewModel> columns;
         public ObservableCollection<ColumnViewModel> Columns
@@ -55,6 +56,29 @@ namespace kanban_project.ViewModels
             get => Model.Id;
         }
 
-        // удаление столбца
+        public void AddColumn()
+        {
+            // добавить НАСТОЯЩЕЕ создание
+            ColumnViewModel column = new ColumnViewModel();
+            Columns.Add(column);
+            column.Parent = this;
+        }
+
+        public void AddColumn(ColumnModel columnModel)
+        {
+            ColumnViewModel column = new ColumnViewModel(columnModel);
+            Columns.Add(column);
+            column.Parent = this;
+        }
+
+        public void DeleteColumn(ColumnViewModel column) {
+            column.Parent = null;
+            Columns.Remove(column);
+        }
+
+        public void Delete()
+        {
+            Parent.DeleteBoard(this);
+        }
     }
 }

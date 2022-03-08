@@ -5,34 +5,21 @@
              mc:Ignorable="d" d:DesignHeight="300"
              xmlns:vm="using:kanban_project.ViewModels"
              xmlns:mock="using:kanban_project.DesignMock"
-             xmlns:controls="using:kanban_project.Controls"
-             x:Class="kanban_project.Controls.ColumnUserControl"
-             DragDrop.AllowDrop="True"
-             Width="250">
+             x:Class="kanban_project.Views.ColumnView"
+             DragDrop.AllowDrop="True" Width="250">
     <Design.DataContext>
         <mock:ColumnMock />
     </Design.DataContext>
-	<Border Classes="Column" CornerRadius="12" VerticalAlignment="Top">
-		<ScrollViewer Name="CardScrollViewer"
+    <Border Classes="Column" VerticalAlignment="Top">
+        <ScrollViewer Name="CardScrollViewer"
                   HorizontalScrollBarVisibility="Disabled"
                   VerticalScrollBarVisibility="Auto">
             <StackPanel Margin="12">
+                <!--Color-->
                 <Border Classes="ColumnTitle" HorizontalAlignment="Left">
                     <TextBlock Text="{Binding Name}" TextWrapping="Wrap"/>
                 </Border>
-                <ItemsControl Items="{Binding Cards}" IsVisible="{Binding Cards.Count}">
-                    <ItemsControl.ItemsPanel>
-                        <ItemsPanelTemplate>
-                            <StackPanel />
-                        </ItemsPanelTemplate>
-                    </ItemsControl.ItemsPanel>
-                    <ItemsControl.ItemTemplate>
-                        <DataTemplate>
-                            <controls:CardUserControl DataContext="{Binding}"/>
-                        </DataTemplate>
-                    </ItemsControl.ItemTemplate>
-                </ItemsControl>
-
+                <ItemsControl Items="{Binding Cards}" IsVisible="{Binding Cards.Count}"/>
                 <Button Classes="Add" Content="Добавить карточку" HorizontalAlignment="Stretch" HorizontalContentAlignment="Center">
                     <Button.Flyout>
                         <Flyout>
