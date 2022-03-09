@@ -11,6 +11,11 @@
         <mock:ColumnMock />
     </Design.DataContext>
     <Border Classes="Column" VerticalAlignment="Top">
+        <Border.ContextMenu>
+            <ContextMenu>
+                <TextBlock Text="Удалить столбец" Tapped="DeleteColumn"/>
+            </ContextMenu>
+        </Border.ContextMenu>
         <ScrollViewer Name="CardScrollViewer"
                   HorizontalScrollBarVisibility="Disabled"
                   VerticalScrollBarVisibility="Auto">

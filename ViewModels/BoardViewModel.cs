@@ -1,10 +1,7 @@
 ﻿using kanban_project.Models;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Collections.ObjectModel;
+using System.Linq;
 
 namespace kanban_project.ViewModels
 {
@@ -50,7 +47,7 @@ namespace kanban_project.ViewModels
             get => Model.Description;
             set => Model.Description = value;
         }
-        
+
         public Guid Id
         {
             get => Model.Id;
@@ -62,6 +59,7 @@ namespace kanban_project.ViewModels
             ColumnViewModel column = new ColumnViewModel();
             Columns.Add(column);
             column.Parent = this;
+            Serializer.SerializeBoards();
         }
 
         public void AddColumn(ColumnModel columnModel)
@@ -69,11 +67,14 @@ namespace kanban_project.ViewModels
             ColumnViewModel column = new ColumnViewModel(columnModel);
             Columns.Add(column);
             column.Parent = this;
+            Serializer.SerializeBoards();
         }
 
-        public void DeleteColumn(ColumnViewModel column) {
+        public void DeleteColumn(ColumnViewModel column)
+        {
             column.Parent = null;
             Columns.Remove(column);
+            Serializer.SerializeBoards();
         }
 
         public void Delete()

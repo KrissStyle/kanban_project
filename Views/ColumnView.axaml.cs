@@ -1,7 +1,7 @@
-using Avalonia;
 using Avalonia.Controls;
-using Avalonia.Markup.Xaml;
 using Avalonia.Input;
+using Avalonia.Interactivity;
+using Avalonia.Markup.Xaml;
 using kanban_project.Models;
 using kanban_project.ViewModels;
 
@@ -17,10 +17,16 @@ namespace kanban_project.Views
 
             scrollViewer = this.Find<ScrollViewer>("CardScrollViewer");
             textBox = this.Find<TextBox>("AddCardTextBox");
-                
+
             textBox.KeyDown += ColumnUserControl_KeyDown;
 
             AddHandler(DragDrop.DropEvent, OnDrop);
+        }
+
+        private void DeleteColumn(object? sender, RoutedEventArgs e)
+        {
+            var column = DataContext as ColumnViewModel;
+            column.Parent.DeleteColumn(column);
         }
 
         private void ColumnUserControl_KeyDown(object sender, Avalonia.Input.KeyEventArgs e)
@@ -29,7 +35,8 @@ namespace kanban_project.Views
             {
                 if (string.IsNullOrEmpty(textBox.Text))
                 {
-                } else
+                }
+                else
                 {
                     (DataContext as ColumnViewModel).AddCard(new CardModel() { Name = textBox.Text });
                     scrollViewer.ScrollToEnd();
@@ -43,7 +50,8 @@ namespace kanban_project.Views
         {
             CardViewModel card = e.Data.Get("card") as CardViewModel;
 
-            if (card.Parent == this.DataContext) return;
+            if (card.Parent == this.DataContext)
+                return;
 
             card.Parent.RemoveCard(card);
             (DataContext as ColumnViewModel).AddCard(card.Model);

@@ -1,17 +1,18 @@
-﻿using System;
-using kanban_project.Models;
+﻿using kanban_project.Models;
+using System;
 
-namespace kanban_project.ViewModels {
+namespace kanban_project.ViewModels
+{
     public class CardViewModel : ViewModelBase
     {
         public CardViewModel()
         {
-            this.Model = new CardModel();
+            Model = new CardModel();
         }
 
         public CardViewModel(CardModel card)
         {
-            this.Model = card;
+            Model = card;
         }
 
         public CardModel Model { get; set; }
@@ -31,10 +32,9 @@ namespace kanban_project.ViewModels {
 
         public Guid Id { get => Model.Id; }
 
-        public Action<CardViewModel> ShowDetailedCardDialog { get; set; }
-
-        // редактирование
-        // удаление
+        public void Delete()
+        {
+            Parent.RemoveCard(this);
+        }
     }
-
 }

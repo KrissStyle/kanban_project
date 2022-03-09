@@ -3,12 +3,24 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             xmlns:b="using:kanban_project.Behaviors"
              x:Class="kanban_project.Views.BoardView">
     <ScrollViewer Name="ColumnScrollViewer" Padding="30" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Disabled">
         <Grid RowDefinitions="auto,30,*">
             <StackPanel Spacing="6" Grid.Row="0" >
-                <TextBox Classes="BoardHeading" Text="{Binding Name}" HorizontalAlignment="Left"/>
-                <TextBox Classes="BoardAccent" Text="{Binding Description}" HorizontalAlignment="Left" AcceptsReturn="True"/>
+                <StackPanel.Styles>
+                    <Style Selector="TextBox">
+                        <Setter Property="Interaction.Behaviors">
+                            <BehaviorCollectionTemplate>
+                                <BehaviorCollection>
+                                    <b:UnfocusBehavior/>
+                                </BehaviorCollection>
+                            </BehaviorCollectionTemplate>
+                        </Setter>
+                    </Style>
+                </StackPanel.Styles>
+                <TextBox Name="BoardHeading" Classes="BoardHeading" Text="{Binding Name}" HorizontalAlignment="Left"/>
+                <TextBox Name="BoardDescription" Classes="BoardAccent" Text="{Binding Description}" HorizontalAlignment="Left" AcceptsReturn="True"/>
             </StackPanel>
             <Border Classes="Board" Grid.Row="2">
                 <StackPanel Orientation="Horizontal">

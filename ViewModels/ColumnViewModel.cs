@@ -1,9 +1,9 @@
-﻿using System;
-using System.Linq;
-using System.Collections.ObjectModel;
-using kanban_project.Models;
-using Avalonia.Media;
+﻿using Avalonia.Media;
 using DynamicData;
+using kanban_project.Models;
+using System;
+using System.Collections.ObjectModel;
+using System.Linq;
 
 namespace kanban_project.ViewModels
 {
@@ -71,7 +71,7 @@ namespace kanban_project.ViewModels
             CardViewModel cardViewModel = new CardViewModel(card) { Parent = this };
             Cards.Add(cardViewModel);
             Model.Cards.Add(card);
-            //save
+            Serializer.SerializeBoards();
         }
 
         public void EditCard(CardViewModel oldCard, CardViewModel newCard)
@@ -79,13 +79,13 @@ namespace kanban_project.ViewModels
             newCard.Parent = this;
             Model.Cards.Replace(oldCard.Model, newCard.Model);
             Cards.Replace(oldCard, newCard);
-            //save
+            Serializer.SerializeBoards();
         }
 
         public void RemoveCard(CardViewModel card)
         {
             Cards.Remove(card);
-            //save
+            Serializer.SerializeBoards();
         }
 
         public void Delete()

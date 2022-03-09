@@ -1,11 +1,11 @@
+using Avalonia;
 using Avalonia.Controls;
+using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Input;
+using Avalonia.Interactivity;
 using Avalonia.Markup.Xaml;
 using kanban_project.ViewModels;
 using System;
-using Avalonia;
-using Avalonia.Controls.ApplicationLifetimes;
-using Avalonia.Interactivity;
 
 namespace kanban_project.Views
 {
@@ -28,6 +28,12 @@ namespace kanban_project.Views
 
                 card.Parent.EditCard(card, details.card);
             }
+        }
+
+        public void DeleteCard(object? sender, RoutedEventArgs e)
+        {
+            var card = DataContext as CardViewModel;
+            card.Parent.RemoveCard(card);
         }
 
         PointerPoint initialPoint;
