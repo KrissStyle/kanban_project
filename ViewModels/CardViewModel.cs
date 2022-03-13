@@ -1,4 +1,5 @@
 ﻿using kanban_project.Models;
+using ReactiveUI;
 using System;
 
 namespace kanban_project.ViewModels
@@ -21,13 +22,25 @@ namespace kanban_project.ViewModels
         public string Name
         {
             get => Model.Name;
-            set => Model.Name = value;
+            set
+            {
+                if (Model.Name == value)
+                    return;
+                Model.Name = value;
+                this.RaisePropertyChanged();
+            }
         }
 
         public string Description
         {
             get => Model.Description;
-            set => Model.Description = value;
+            set
+            {
+                if (Model.Description == value)
+                    return;
+                Model.Description = value;
+                this.RaisePropertyChanged();
+            }
         }
 
         public Guid Id { get => Model.Id; }

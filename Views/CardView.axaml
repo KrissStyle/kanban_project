@@ -6,6 +6,7 @@
              xmlns:b="using:kanban_project.Behaviors"
              xmlns:vm="using:kanban_project.ViewModels"
              xmlns:mock="using:kanban_project.DesignMock"
+			 x:DataType="vm:CardViewModel"
              x:Class="kanban_project.Views.CardView"
              Tapped="ShowDetailedCardDialog">
     <Design.DataContext>

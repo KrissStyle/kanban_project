@@ -19,14 +19,15 @@ namespace kanban_project.Views
         public async void ShowDetailedCardDialog(object sender, RoutedEventArgs e)
         {
             var card = DataContext as CardViewModel;
-            var details = new DetailedCardViewModel(DataContext as CardViewModel);
+            var details = new DetailedCardViewModel(card);
             DetailedCardWindow popup = new DetailedCardWindow() { DataContext = details };
 
             if (Application.Current.ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
             {
+                //popup.Show();
                 await popup.ShowDialog(desktop.MainWindow);
 
-                card.Parent.EditCard(card, details.card);
+                //card.Parent.EditCard(card, details.card);
             }
         }
 

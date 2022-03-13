@@ -2,7 +2,7 @@
 using System;
 using System.Collections.ObjectModel;
 using System.Linq;
-
+using ReactiveUI;
 namespace kanban_project.ViewModels
 {
     public class BoardViewModel : ViewModelBase
@@ -39,7 +39,13 @@ namespace kanban_project.ViewModels
         public string Name
         {
             get => Model.Name;
-            set => Model.Name = value;
+            set
+            {
+                if (Model.Name == value)
+                    return;
+                Model.Name = value;
+                this.RaisePropertyChanged();
+            }
         }
 
         public string Description

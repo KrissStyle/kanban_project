@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ReactiveUI;
+using System;
 
 namespace kanban_project.ViewModels
 {
@@ -14,13 +15,25 @@ namespace kanban_project.ViewModels
         public string Name
         {
             get => card.Name;
-            set => card.Name = value;
+            set
+            {
+                if (card.Name == value)
+                    return;
+                card.Name = value;
+                this.RaisePropertyChanged();
+            }
         }
 
         public string Description
         {
             get => card.Description;
-            set => card.Description = value;
+            set
+            {
+                if (card.Description == value)
+                    return;
+                card.Description = value;
+                this.RaisePropertyChanged();
+            }
         }
 
         public Guid Id { get => card.Id; }
